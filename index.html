@@ -36,11 +36,9 @@
             .card-hover { transition: all 0.3s ease; }
             .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(139, 115, 85, 0.15); }
             .pattern-dot { background-image: radial-gradient(#E8DED2 1px, transparent 1px); background-size: 20px 20px; }
-            .cursor-zoom { cursor: zoom-in; }
         }
     </style>
     
-    <!-- ✅ Kode Watermark + Zoom Gambar -->
     <style>
         .karya-container {
             position: relative;
@@ -70,7 +68,6 @@
             pointer-events: none;
         }
         
-        /* ===== Fitur Zoom Klik ===== */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -109,11 +106,7 @@
 <body class="bg-cream text-dark font-sans">
     <nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#">
-                <video src="logo-bergerak.mp4" autoplay loop muted playsinline class="h-10 w-auto">
-                    De'tails Attelier
-                </video>
-            </a>
+            <a href="#beranda" class="font-display text-lg font-semibold">De'tails Attelier</a>
             <div class="hidden md:flex gap-8 text-sm tracking-wide">
                 <a href="#beranda" class="hover:text-cocoa transition-colors">Beranda</a>
                 <a href="#tentang" class="hover:text-cocoa transition-colors">Tentang</a>
@@ -134,8 +127,8 @@
                     Setiap detail<br>
                     <span class="text-cocoa">menceritakan kisah</span>
                 </h1>
-                <p class="text-lg text-dark/70 mb-8 max-w-lg leading-relaxed">
-                    Selamat datang di De'tails Attelier — tempat ide busana lahir dari goresan jari, digambar dengan Ibis Paint, dan dihiasi dengan perhatian pada setiap bagian kecil yang indah.
+                <p class="text-lg mb-8 max-w-lg leading-relaxed">
+                    Selamat datang di De'tails Attelier — tempat ide busana lahir dari goresan jari, digambar dengan tulus di Ibis Paint, dan dihiasi dengan perhatian pada setiap bagian kecil yang indah.
                 </p>
                 <a href="#karya" class="inline-block bg-cocoa text-white px-8 py-3 rounded-full hover:bg-accent transition-colors shadow-lg">
                     Lihat Karya Saya <i class="fa fa-arrow-right ml-2 text-sm"></i>
@@ -149,7 +142,7 @@
                 </div>
                 <div class="absolute -bottom-4 -left-4 bg-white p-4 rounded-xl shadow-lg">
                     <p class="text-xs text-dark/50">Dibuat dengan</p>
-                    <p class="font-semibold text-cocoa">Ibis Paint</p>
+                    <p class="font-semibold text-cocoa">Ibis Paint 🖌️</p>
                 </div>
             </div>
         </div>
@@ -163,9 +156,9 @@
                 Hai! Saya perancang busana pemula yang percaya bahwa keindahan busana bukan hanya pada bentuknya — melainkan pada <strong>detailnya</strong>.
             </p>
             <p class="mb-5 text-lg leading-relaxed">
-                Semua gambar di sini saya buat dengan tulus menggunakan <strong>Ibis Paint</strong> di gawai saya. Tidak butuh alat mahal untuk menuangkan imajinasi — cukup ketekunan dan mata yang menghargai lipatan, hiasan, tekstur, dan cara kain jatuh di tubuh.
+                Semua karya di sini digambar tulus menggunakan <strong>Ibis Paint</strong> di gawai. Tidak butuh alat mahal untuk berkarya — cukup ketekunan, kesabaran, dan mata yang menghargai keindahan kecil.
             </p>
-            <p class="text-lg leading-relaxed text-cocoa">
+            <p class="text-lg italic text-cocoa">
                 "Busana yang baik dipakai di tubuh; busana yang penuh detail tertanam di ingatan."
             </p>
         </div>
@@ -179,7 +172,6 @@
                 <div class="w-20 h-0.5 bg-accent mx-auto mt-4"></div>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Karya 1 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
                         <div class="karya-container" onclick="bukaZoom('black-butterfly.png')">
@@ -188,12 +180,11 @@
                     </div>
                     <div class="p-5">
                         <h3 class="font-semibold text-lg mb-2">Black Butterfly</h3>
-                        <p class="text-sm text-dark/60 mb-3">Fokus: Terinspirasi dari indah & Elegannya Kupu-kupu Hitam</p>
+                        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari keindahan sayap kupu-kupu hitam — anggun, misterius, penuh detail halus.</p>
                         <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
                     </div>
                 </div>
 
-                <!-- Karya 2 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
                         <div class="karya-container" onclick="bukaZoom('karya2.png')">
@@ -202,12 +193,11 @@
                     </div>
                     <div class="p-5">
                         <h3 class="font-semibold text-lg mb-2">Judul Desain</h3>
-                        <p class="text-sm text-dark/60 mb-3">Fokus: tekstur kain & lipatan</p>
+                        <p class="text-sm text-dark/60 mb-3">Fokus pada tekstur kain dan lipatan yang lembut dan alami.</p>
                         <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
                     </div>
                 </div>
 
-                <!-- Karya 3 -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
                         <div class="karya-container" onclick="bukaZoom('karya3.png')">
@@ -216,7 +206,7 @@
                     </div>
                     <div class="p-5">
                         <h3 class="font-semibold text-lg mb-2">Judul Desain</h3>
-                        <p class="text-sm text-dark/60 mb-3">Fokus: pola & perpaduan warna</p>
+                        <p class="text-sm text-dark/60 mb-3">Perpaduan warna dan motif yang saling melengkapi.</p>
                         <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
                     </div>
                 </div>
@@ -235,15 +225,15 @@
             <div class="space-y-6">
                 <div class="bg-white p-6 rounded-xl shadow-sm">
                     <h3 class="font-semibold text-lg mb-2">✨ Inspirasi Alam</h3>
-                    <p class="text-dark/70">Bentuk kelopak bunga dan urat daun menginspirasi garis lengkung pada hiasan leher desain ini.</p>
+                    <p class="text-dark/70">Bentuk kelopak bunga dan sayap kupu-kupu menginspirasi garis lengkung yang lembut pada desain gaun ini.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-sm">
                     <h3 class="font-semibold text-lg mb-2">✨ Warna & Suasana</h3>
-                    <p class="text-dark/70">Palet warna lembut diambil dari suasana sore hari — menciptakan kesan tenang namun tetap anggun.</p>
+                    <p class="text-dark/70">Palet warna lembut diambil dari pemandangan senja — menciptakan kesan tenang namun tetap anggun.</p>
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-lg mb-2">✨ Teknik Penggambaran</h3>
-                    <p class="text-dark/70">Menggunakan kuas khusus Ibis Paint untuk meniru tekstur kain sutra dan katun — agar terasa nyata meski digambar di layar.</p>
+                    <h3 class="font-semibold text-lg mb-2">✨ Teknik Berkarya</h3>
+                    <p class="text-dark/70">Menggambar langsung di layar dengan Ibis Paint mengajarkan kesabaran dan ketelitian pada setiap detail kecil.</p>
                 </div>
             </div>
         </div>
@@ -252,22 +242,23 @@
     <section id="hubungi" class="py-20 px-4 sm:px-6 lg:px-8 bg-dark text-white">
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="font-display text-3xl font-semibold mb-4">Ikuti Perjalananku</h2>
-            <p class="text-gray-300 mb-8">Terus kembangkan De'tails Attelier bersama saya — setiap karya baru adalah langkah lebih dekat ke mimpi</p>
+            <p class="text-gray-300 mb-8">Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨</p>
             
-            <!-- ✅ Bagian Medsos Sudah Lengkap dengan X -->
             <div class="flex justify-center gap-6 mb-10">
-                <a href="GANTI-DENGAN-LINK-INSTAGRAM-MU" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
+                <a href="https://www.instagram.com/detailsattelier" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
                     <i class="fa fa-instagram"></i>
                 </a>
-                <a href="GANTI-DENGAN-LINK-PINTEREST-MU" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
+                <a href="https://pin.it/2TqFqCe9A" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
                     <i class="fa fa-pinterest"></i>
                 </a>
-                <a href="GANTI-DENGAN-LINK-TIKTOK-MU" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
-                    <i class="fa fa-tiktok"></i>
-                </a>
-                <a href="GANTI-DENGAN-LINK-X-MU" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
+                <a href="https://x.com/detailsattelier" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
                     <i class="fa fa-twitter"></i>
                 </a>
+                <!-- Nanti kalau sudah ada TikTok, tambahkan di sini:
+                <a href="LINK-TIKTOK-MU" target="_blank" class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors">
+                    <i class="fa fa-music"></i>
+                </a>
+                -->
             </div>
             
             <p class="text-sm text-gray-400">Siap menerima saran, kolaborasi, dan pertemanan 💌<br><em>"Karena detail adalah jiwa busana."</em></p>
@@ -275,17 +266,15 @@
     </section>
 
     <footer class="bg-black/80 text-white/60 py-6 text-center text-sm">
-        <p>© 2026 De'tails Attelier — Semua karya digambar dengan Ibis Paint</p>
+        <p>© 2026 De'tails Attelier — Semua karya digambar dengan tulus di Ibis Paint 🖌️</p>
     </footer>
 
-    <!-- ✅ Tampilan Zoom Besar -->
     <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
-        <img id="gambarZoom" src="" alt="Zoom">
+        <img id="gambarZoom" src="" alt="Perbesar gambar">
         <div class="zoom-watermark"></div>
     </div>
 
     <script>
-        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -293,7 +282,6 @@
             });
         });
 
-        // Fungsi Zoom
         function bukaZoom(namaFile) {
             document.getElementById('gambarZoom').src = namaFile;
             document.getElementById('zoomOverlay').classList.add('active');
