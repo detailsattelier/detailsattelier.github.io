@@ -106,7 +106,6 @@
     </style>
     
     <script>
-        // Fungsi tombol suka
         function getLikes(id) {
             return parseInt(localStorage.getItem('likes_' + id) || '0');
         }
@@ -130,13 +129,14 @@
             }
         }
         
-        // Muat ulang tampilan saat halaman dibuka
         document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3'].forEach(function(id) {
-                document.getElementById('jumlah-' + id).textContent = getLikes(id);
-                if (sudahDisukai(id)) {
-                    document.getElementById('hati-' + id).classList.add('liked');
-                    document.getElementById('hati-' + id).textContent = '♥';
+            ['karya1', 'karya2', 'karya3', 'karya4'].forEach(function(id) {
+                const jumlahEl = document.getElementById('jumlah-' + id);
+                if (jumlahEl) jumlahEl.textContent = getLikes(id);
+                const hatiEl = document.getElementById('hati-' + id);
+                if (hatiEl && sudahDisukai(id)) {
+                    hatiEl.classList.add('liked');
+                    hatiEl.textContent = '♥';
                 }
             });
         });
@@ -267,6 +267,25 @@
                             <span id="hati-karya3" class="heart-btn text-lg">♡</span>
                             <span>Suka</span>
                             <span id="jumlah-karya3" class="font-semibold">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Karya 4 — Starry Night -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
+                        <div class="karya-container" onclick="bukaZoom('starry-night.png')">
+                            <img src="starry-night.png" alt="Starry Night — Terinspirasi Van Gogh">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-base mb-2">Starry Night 🌙</h3>
+                        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari lukisan legendaris The Starry Night karya Vincent van Gogh — langit malam yang bercerita.</p>
+                        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+                        <button onclick="tambahSuka('karya4')" class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition-colors">
+                            <span id="hati-karya4" class="heart-btn text-lg">♡</span>
+                            <span>Suka</span>
+                            <span id="jumlah-karya4" class="font-semibold">0</span>
                         </button>
                     </div>
                 </div>
