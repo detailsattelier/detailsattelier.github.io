@@ -112,12 +112,14 @@
     </style>
     
     <script>
+        // Penyimpanan yang tetap terjaga
         function getLikes(id) {
-            return parseInt(localStorage.getItem('likes_' + id) || '0');
+            const data = localStorage.getItem('likes_' + id);
+            return data ? parseInt(data) : 0;
         }
         
         function setLikes(id, jumlah) {
-            localStorage.setItem('likes_' + id, jumlah);
+            localStorage.setItem('likes_' + id, jumlah.toString());
         }
         
         function sudahDisukai(id) {
@@ -126,23 +128,27 @@
         
         function tambahSuka(id) {
             if (!sudahDisukai(id)) {
-                let jumlah = getLikes(id) + 1;
+                const jumlah = getLikes(id) + 1;
                 setLikes(id, jumlah);
                 localStorage.setItem('sudahSuka_' + id, 'true');
-                document.getElementById('jumlah-' + id).textContent = jumlah;
-                document.getElementById('hati-' + id).classList.add('liked');
-                document.getElementById('hati-' + id).textContent = '♥';
+                const elJumlah = document.getElementById('jumlah-' + id);
+                const elHati = document.getElementById('hati-' + id);
+                if (elJumlah) elJumlah.textContent = jumlah;
+                if (elHati) {
+                    elHati.classList.add('liked');
+                    elHati.textContent = '♥';
+                }
             }
         }
         
         document.addEventListener('DOMContentLoaded', function() {
             ['karya1', 'karya2', 'karya3'].forEach(function(id) {
-                const jumlahEl = document.getElementById('jumlah-' + id);
-                if (jumlahEl) jumlahEl.textContent = getLikes(id);
-                const hatiEl = document.getElementById('hati-' + id);
-                if (hatiEl && sudahDisukai(id)) {
-                    hatiEl.classList.add('liked');
-                    hatiEl.textContent = '♥';
+                const elJumlah = document.getElementById('jumlah-' + id);
+                const elHati = document.getElementById('hati-' + id);
+                if (elJumlah) elJumlah.textContent = getLikes(id);
+                if (elHati && sudahDisukai(id)) {
+                    elHati.classList.add('liked');
+                    elHati.textContent = '♥';
                 }
             });
         });
