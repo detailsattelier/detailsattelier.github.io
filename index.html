@@ -50,7 +50,10 @@
     <!-- Navigasi -->
     <nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#beranda" class="font-display font-bold text-xl">De'tails Attelier</a>
+            <a href="#beranda" class="flex items-center gap-2">
+                <img src="da-logo.png" alt="DA Logo" class="h-8 w-auto">
+                <span class="font-display font-bold text-xl">De'tails Attelier</span>
+            </a>
             <div class="hidden md:flex gap-6 text-sm">
                 <a href="#beranda" class="hover:text-cocoa">Beranda</a>
                 <a href="#tentang" class="hover:text-cocoa">Tentang</a>
@@ -62,16 +65,24 @@
 
     <!-- Beranda -->
     <section id="beranda" class="pt-32 pb-20 px-4 pattern-dot min-h-screen flex items-center">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="font-display text-4xl md:text-5xl font-bold mb-6">
-                Setiap detail menceritakan kisah
-            </h1>
-            <p class="text-lg mb-8 text-gray-700">
-                Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint 🤎
-            </p>
-            <a href="#karya" class="inline-block bg-cocoa text-white px-8 py-3 rounded-full text-lg hover:bg-accent transition-colors">
-                Lihat Karya Saya <i class="fa fa-arrow-right ml-2"></i>
-            </a>
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-bold mb-6">
+                    Setiap detail<br>
+                    <span class="text-cocoa">menceritakan kisah</span>
+                </h1>
+                <p class="text-lg mb-8 text-gray-700">
+                    Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint 🤎
+                </p>
+                <a href="#karya" class="inline-block bg-cocoa text-white px-8 py-3 rounded-full text-lg hover:bg-accent transition-colors">
+                    Lihat Karya Saya <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+            <div class="flex justify-center">
+                <div class="w-full max-w-sm aspect-square rounded-full bg-warm/30 flex items-center justify-center">
+                    <img src="da-logo.png" alt="De'tails Attelier" class="w-3/4 h-auto">
+                </div>
+            </div>
         </div>
     </section>
 
