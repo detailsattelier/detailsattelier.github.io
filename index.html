@@ -9,421 +9,106 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        cream: '#F9F5F0',
-                        warm: '#E8DED2',
-                        cocoa: '#8B7355',
-                        dark: '#2C231B',
-                        accent: '#C89F73',
-                    },
-                    fontFamily: {
-                        display: ['"Playfair Display"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    colors: { cream: '#F9F5F0', warm: '#E8DED2', cocoa: '#8B7355', dark: '#2C231B', accent: '#C89F73' },
+                    fontFamily: { display: ['"Playfair Display"', 'serif'], sans: ['Inter', 'sans-serif'] }
                 }
             }
         }
     </script>
-    
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .text-shadow-sm { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-            .card-hover { transition: all 0.3s ease; }
-            .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(139, 115, 85, 0.15); }
-            .pattern-dot { background-image: radial-gradient(#E8DED2 1px, transparent 1px); background-size: 20px 20px; }
-            .heart-btn { transition: all 0.2s ease; }
-            .heart-btn.liked { color: '#c0392b'; transform: scale(1.2); }
-        }
-    </style>
-    
     <style>
-        /* Tombol Musik */
-        .music-btn {
-            position: fixed;
-            top: 70px;
-            right: 20px;
-            background: rgba(249, 245, 240, 0.9);
-            border: 1px solid #C89F73;
-            color: #8B7355;
-            padding: 0.6rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 999;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-        .music-btn:hover {
-            background: #C89F73;
-            color: white;
-        }
-        
-        .karya-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: block;
-            cursor: zoom-in;
-        }
-        
-        .karya-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('./da-logo.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: 160% auto;
-            opacity: 0.15;
-            pointer-events: none;
-            z-index: 1;
-        }
-        
-        .karya-container img {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-        
-        .zoom-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            cursor: zoom-out;
-        }
-        .zoom-overlay.active {
-            display: flex;
-        }
-        .zoom-overlay img {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        .zoom-watermark {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 150px;
-            height: 50px;
-            background-image: url('./da-logo.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: bottom right;
-            opacity: 0.25;
-            pointer-events: none;
-        }
+        .music-btn {position:fixed;top:70px;right:20px;background:rgba(249,245,240,0.9);border:1px solid #C89F73;color:#8B7355;padding:0.6rem 1rem;border-radius:50px;z-index:999;}
+        .music-btn:hover {background:#C89F73;color:white;}
+        .pattern-dot {background-image:radial-gradient(#E8DED2 1px,transparent 1px);background-size:20px 20px;}
+        .card-hover {transition:0.3s;}
+        .card-hover:hover {transform:translateY(-5px);box-shadow:0 10px 25px rgba(139,115,85,0.15);}
     </style>
-    
-    <script>
-        function getLikes(id) {
-            const data = localStorage.getItem('likes_' + id);
-            return data ? parseInt(data) : 0;
-        }
-        
-        function setLikes(id, jumlah) {
-            localStorage.setItem('likes_' + id, jumlah.toString());
-        }
-        
-        function sudahDisukai(id) {
-            return localStorage.getItem('sudahSuka_' + id) === 'true';
-        }
-        
-        function tambahSuka(id) {
-            if (!sudahDisukai(id)) {
-                const jumlah = getLikes(id) + 1;
-                setLikes(id, jumlah);
-                localStorage.setItem('sudahSuka_' + id, 'true');
-                const elJumlah = document.getElementById('jumlah-' + id);
-                const elHati = document.getElementById('hati-' + id);
-                if (elJumlah) elJumlah.textContent = jumlah;
-                if (elHati) {
-                    elHati.classList.add('liked');
-                    elHati.textContent = '♥';
-                }
-            }
-        }
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3'].forEach(function(id) {
-                const elJumlah = document.getElementById('jumlah-' + id);
-                const elHati = document.getElementById('hati-' + id);
-                if (elJumlah) elJumlah.textContent = getLikes(id);
-                if (elHati && sudahDisukai(id)) {
-                    elHati.classList.add('liked');
-                    elHati.textContent = '♥';
-                }
-            });
-            
-            // Musik Latar
-            const music = document.getElementById('bgMusic');
-            const toggleBtn = document.getElementById('musicToggle');
-            let isPlaying = false;
-            
-            if (music) {
-                music.volume = 0.25;
-                
-                const playPromise = music.play();
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        isPlaying = true;
-                        if (toggleBtn) toggleBtn.textContent = '🔇 Matikan Musik';
-                    }).catch(() => {
-                        isPlaying = false;
-                        if (toggleBtn) toggleBtn.textContent = '🔊 Nyalakan Musik';
-                    });
-                }
-            }
-            
-            if (toggleBtn) {
-                toggleBtn.addEventListener('click', function() {
-                    if (!music) return;
-                    if (isPlaying) {
-                        music.pause();
-                        toggleBtn.textContent = '🔊 Nyalakan Musik';
-                    } else {
-                        music.play();
-                        toggleBtn.textContent = '🔇 Matikan Musik';
-                    }
-                    isPlaying = !isPlaying;
-                });
-            }
-        });
-    </script>
 </head>
 <body class="bg-cream text-dark font-sans">
-    <!-- Musik Latar -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="fairytale-musik.mp3" type="audio/mpeg">
-        Browser kamu tidak mendukung pemutar musik.
-    
-
-    <!-- Tombol Musik -->
     <button class="music-btn" id="musicToggle">🔊 Nyalakan Musik</button>
+    <audio id="bgMusic" loop preload="auto"><source src="fairytale-musik.mp3" type="audio/mpeg">
 
     <nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 py-2 flex justify-between items-center">
             <a href="#beranda" class="flex items-center gap-2">
-                <img src="da-logo.png" alt="DA Logo" class="h-7 w-auto">
-                <span class="font-display text-base font-semibold">De'tails Attelier</span>
+                <img src="da-logo.png" alt="Logo" class="h-7">
+                <span class="font-display font-semibold">De'tails Attelier</span>
             </a>
-            <button class="md:hidden text-dark text-xl">
-                <i class="fa fa-bars"></i>
-            </button>
-            <div class="hidden md:flex gap-6 text-sm tracking-wide">
-                <a href="#beranda" class="hover:text-cocoa transition-colors">Beranda</a>
-                <a href="#tentang" class="hover:text-cocoa transition-colors">Tentang</a>
-                <a href="#karya" class="hover:text-cocoa transition-colors">Karya</a>
-                <a href="#ide" class="hover:text-cocoa transition-colors">Catatan Ide</a>
-                <a href="#hubungi" class="hover:text-cocoa transition-colors">Hubungi</a>
+            <div class="hidden md:flex gap-6 text-sm">
+                <a href="#beranda" class="hover:text-cocoa">Beranda</a>
+                <a href="#tentang" class="hover:text-cocoa">Tentang</a>
+                <a href="#karya" class="hover:text-cocoa">Karya</a>
+                <a href="#hubungi" class="hover:text-cocoa">Hubungi</a>
             </div>
         </div>
     </nav>
-    <section id="beranda" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 pattern-dot">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-            <div>
-                <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold mb-5">
-                    Setiap detail<br>
-                    <span class="text-cocoa">menceritakan kisah</span>
-                </h1>
-                <p class="text-base mb-6 max-w-lg leading-relaxed">
-                    Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint.
-                </p>
-                <a href="#karya" class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg">
-                    Lihat Karya Saya <i class="fa fa-arrow-right ml-2 text-sm"></i>
-                </a>
-            </div>
-            <div class="relative">
-                <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl bg-white flex items-center justify-center p-4">
-                    <video src="logo-bergerak.mp4" autoplay loop muted playsinline class="w-full max-w-[280px] mx-auto">
-                        De'tails Attelier
-                    </video>
-                </div>
-                <div class="absolute -bottom-3 -left-3 bg-white p-3 rounded-lg shadow-md">
-                    <p class="text-xs text-dark/50">Dibuat dengan</p>
-                    <p class="font-semibold text-cocoa text-sm">Ibis Paint 🖌️</p>
-                </div>
-            </div>
+
+    <section id="beranda" class="pt-28 pb-16 px-4 pattern-dot">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="font-display text-4xl font-semibold mb-5">Setiap detail menceritakan kisah</h1>
+            <p class="mb-6 text-lg">Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus 🤎</p>
+            <a href="#karya" class="inline-block bg-cocoa text-white px-8 py-3 rounded-full hover:bg-accent">Lihat Karya Saya →</a>
         </div>
     </section>
-    <section id="tentang" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="font-display text-2xl font-semibold mb-4">Tentang De'tails Attelier</h2>
-            <div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
-            <p class="mb-4 text-base leading-relaxed">
-                Hai! Saya Stefen — seorang yang memiliki impian besar untuk menjadi ikon fashion yang dikenal banyak orang. Perjalanan ini dimulai dari sini.
-            </p>
-            <p class="mb-4 text-base leading-relaxed">
-                Semua karya di sini dibuat dengan tulus menggunakan <strong>Ibis Paint</strong> di HP. Tidak butuh alat mahal untuk berkarya — yang dibutuhkan hanya hati, ketekunan, dan imajinasi ✨
-            </p>
-            <p class="text-base italic text-cocoa">
-                "Setiap detail menceritakan kisah."
-            </p>
-        </div>
-    </section>
-    <section id="karya" class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-10">
-                <h2 class="font-display text-2xl font-semibold mb-3">Karya & Sketsa</h2>
-                <p class="text-dark/60 max-w-xl mx-auto text-sm">Klik gambar untuk memperbesar • Klik ♡ untuk menyukai ✨</p>
-                <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Karya 1: Black Butterfly -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
-                        <div class="karya-container" onclick="bukaZoom('black-butterfly.png')">
-                            <img src="black-butterfly.png" alt="Black Butterfly">
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-base mb-2">Black Butterfly 🦋</h3>
-                        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari keindahan sayap kupu-kupu hitam — anggun, misterius, penuh detail halus.</p>
-                        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-                        <button onclick="tambahSuka('karya1')" class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition-colors">
-                            <span id="hati-karya1" class="heart-btn text-lg">♡</span>
-                            <span>Suka</span>
-                            <span id="jumlah-karya1" class="font-semibold">0</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Karya 2: Starry Night -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
-                        <div class="karya-container" onclick="bukaZoom('starry-night.png')">
-                            <img src="starry-night.png" alt="Starry Night — Terinspirasi Van Gogh">
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-base mb-2">Starry Night 🌙</h3>
-                        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari lukisan legendaris The Starry Night karya Vincent van Gogh — langit malam yang bercerita.</p>
-                        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-                        <button onclick="tambahSuka('karya2')" class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition-colors">
-                            <span id="hati-karya2" class="heart-btn text-lg">♡</span>
-                            <span>Suka</span>
-                            <span id="jumlah-karya2" class="font-semibold">0</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Karya 3: Island Girl -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
-                        <div class="karya-container" onclick="bukaZoom('island-girl.png')">
-                            <img src="island-girl.png" alt="Island Girl — Terinspirasi Esther Geraldine">
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-base mb-2">Island Girl 🏝️</h3>
-                        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari Esther Geraldine — keindahan kulitnya yang eksotis mencerminkan pesona wanita Indonesia, dipadukan dengan gaya busana yang memancarkan kehangatan warna-warna alam yang membumi.</p>
-                        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-                        <button onclick="tambahSuka('karya3')" class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition-colors">
-                            <span id="hati-karya3" class="heart-btn text-lg">♡</span>
-                            <span>Suka</span>
-                            <span id="jumlah-karya3" class="font-semibold">0</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <p class="text-center mt-8 text-dark/50 text-sm">Tambahkan karya lainnya nanti ✏️</p>
-        </div>
-    </section>
-    <section id="ide" class="py-16 px-4 sm:px-6 lg:px-8 bg-warm/20">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-8">
-                <h2 class="font-display text-2xl font-semibold mb-3">Catatan Ide</h2>
-                <p class="text-dark/60 text-sm">Sumber inspirasi di balik setiap karya</p>
-                <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
-            </div>
-            <div class="space-y-5">
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Kupu-kupu Hitam</h3>
-                    <p class="text-dark/70 text-sm">Keindahan yang tenang dan misterius — kupu-kupu hitam mengajarkan bahwa keindahan tidak selalu harus terang untuk bersinar.</p>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Langit Malam Van Gogh</h3>
-                    <p class="text-dark/70 text-sm">Langit yang berputar, bintang yang berkilauan — bukti bahwa malam pun bisa penuh cahaya dan keindahan yang tak lekang oleh waktu.</p>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Island Girl</h3>
-                    <p class="text-dark/70 text-sm">Terinspirasi dari Esther Geraldine — keanggunan yang alami, hangat, dan mempesona seperti pulau yang damai.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="hubungi" class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white">
+
+    <section id="tentang" class="py-16 px-4 bg-white">
         <div class="max-w-2xl mx-auto text-center">
-            <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
-            <p class="text-gray-300 mb-6 text-sm">Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨</p>
-            
-            <div class="flex justify-center gap-5 mb-6">
-                <a href="https://www.instagram.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="https://pin.it/2TqFqCe9A" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-pinterest"></i>
-                </a>
-                <a href="https://x.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-twitter"></i>
-                </a>
-            </div>
-            
-            <!-- Bagian Email -->
-            <div class="mb-6">
-                <p class="text-sm text-gray-300 mb-2">Hubungi saya untuk kerja sama atau pesan ✉️</p>
-                <a href="mailto:detailssattelier@gmail.com" class="text-accent hover:text-white transition-colors font-medium">
-                    detailssattelier@gmail.com
-                </a>
-            </div>
-            
-            <p class="text-xs text-gray-400 mt-4">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
+            <h2 class="font-display text-2xl font-semibold mb-4">Tentang Saya</h2>
+            <p class="mb-3">Hai! Saya Stefen — bermimpi menjadi ikon fashion yang dikenal banyak orang ✨</p>
+            <p>Semua karya dibuat dengan tulus menggunakan <strong>Ibis Paint</strong> di HP 🖌️</p>
         </div>
     </section>
-    <footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
-        <p>© 2026 De'tails Attelier — Semua karya dibuat dengan Ibis Paint 🖌️</p>
-    </footer>
-    <!-- Zoom Overlay -->
-    <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
-        <img id="gambarZoom" src="" alt="">
-        <div class="zoom-watermark"></div>
-    </div>
+
+    <section id="karya" class="py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-display text-2xl font-semibold text-center mb-10">Karya & Sketsa</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-4 card-hover">
+                    <img src="black-butterfly.png" alt="Black Butterfly" class="w-full h-64 object-cover rounded-lg mb-3">
+                    <h3 class="font-semibold">Black Butterfly 🦋</h3>
+                    <p class="text-sm text-gray-600">Anggun, misterius, penuh keindahan.</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 card-hover">
+                    <img src="starry-night.png" alt="Starry Night" class="w-full h-64 object-cover rounded-lg mb-3">
+                    <h3 class="font-semibold">Starry Night 🌙</h3>
+                    <p class="text-sm text-gray-600">Langit malam yang bercerita.</p>
+                </div>
+                <div class="bg-white rounded-xl p-4 card-hover">
+                    <img src="island-girl.png" alt="Island Girl" class="w-full h-64 object-cover rounded-lg mb-3">
+                    <h3 class="font-semibold">Island Girl 🏝️</h3>
+                    <p class="text-sm text-gray-600">Keindahan alami yang mempesona.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hubungi" class="py-16 px-4 bg-dark text-white">
+        <div class="max-w-xl mx-auto text-center">
+            <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
+            <p class="text-gray-300 mb-6">Setiap karya baru adalah langkah lebih dekat ke mimpi ✨</p>
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="https://instagram.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa"><i class="fa fa-instagram"></i></a>
+                <a href="https://pin.it/2TqFqCe9A" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa"><i class="fa fa-pinterest"></i></a>
+                <a href="https://x.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa"><i class="fa fa-twitter"></i></a>
+            </div>
+            <p class="text-sm text-gray-300 mb-2">Hubungi saya ✉️</p>
+            <a href="mailto:detailssattelier@gmail.com" class="text-accent font-medium">detailssattelier@gmail.com</a>
+            <p class="mt-6 text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
+        </div>
+    </section>
+
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
+        const music = document.getElementById('bgMusic');
+        const toggleBtn = document.getElementById('musicToggle');
+        let isPlaying = false;
+        toggleBtn.addEventListener('click', () => {
+            if(isPlaying) { music.pause(); toggleBtn.textContent='🔊 Nyalakan Musik'; }
+            else { music.play(); toggleBtn.textContent='🔇 Matikan Musik'; }
+            isPlaying = !isPlaying;
         });
-        function bukaZoom(src) {
-            const overlay = document.getElementById('zoomOverlay');
-            const gambar = document.getElementById('gambarZoom');
-            gambar.src = src;
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function tutupZoom() {
-            const overlay = document.getElementById('zoomOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
     </script>
 </body>
 </html>
