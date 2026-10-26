@@ -134,7 +134,6 @@
     </style>
     
     <script>
-        // Penyimpanan yang tetap terjaga
         function getLikes(id) {
             const data = localStorage.getItem('likes_' + id);
             return data ? parseInt(data) : 0;
@@ -180,9 +179,8 @@
             let isPlaying = false;
             
             if (music) {
-                music.volume = 0.25; // Suara lembut — bisa ubah 0.1 s/d 1.0
+                music.volume = 0.25;
                 
-                // Coba main otomatis
                 const playPromise = music.play();
                 if (playPromise !== undefined) {
                     playPromise.then(() => {
@@ -195,7 +193,6 @@
                 }
             }
             
-            // Tombol nyala/mati
             if (toggleBtn) {
                 toggleBtn.addEventListener('click', function() {
                     if (!music) return;
@@ -376,7 +373,7 @@
             <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
             <p class="text-gray-300 mb-6 text-sm">Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨</p>
             
-            <div class="flex justify-center gap-5 mb-8">
+            <div class="flex justify-center gap-5 mb-6">
                 <a href="https://www.instagram.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
                     <i class="fa fa-instagram"></i>
                 </a>
@@ -388,7 +385,15 @@
                 </a>
             </div>
             
-            <p class="text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
+            <!-- Bagian Email -->
+            <div class="mb-6">
+                <p class="text-sm text-gray-300 mb-2">Hubungi saya untuk kerja sama atau pesan ✉️</p>
+                <a href="mailto:detailssattelier@gmail.com" class="text-accent hover:text-white transition-colors font-medium">
+                    detailssattelier@gmail.com
+                </a>
+            </div>
+            
+            <p class="text-xs text-gray-400 mt-4">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
         </div>
     </section>
     <footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
