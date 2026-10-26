@@ -37,11 +37,33 @@
             .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(139, 115, 85, 0.15); }
             .pattern-dot { background-image: radial-gradient(#E8DED2 1px, transparent 1px); background-size: 20px 20px; }
             .heart-btn { transition: all 0.2s ease; }
-            .heart-btn.liked { color: #c0392b; transform: scale(1.2); }
+            .heart-btn.liked { color: '#c0392b'; transform: scale(1.2); }
         }
     </style>
     
     <style>
+        /* Tombol Musik */
+        .music-btn {
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background: rgba(249, 245, 240, 0.9);
+            border: 1px solid #C89F73;
+            color: #8B7355;
+            padding: 0.6rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 999;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .music-btn:hover {
+            background: #C89F73;
+            color: white;
+        }
+        
         .karya-container {
             position: relative;
             width: 100%;
@@ -151,10 +173,55 @@
                     elHati.textContent = '♥';
                 }
             });
+            
+            // Musik Latar
+            const music = document.getElementById('bgMusic');
+            const toggleBtn = document.getElementById('musicToggle');
+            let isPlaying = false;
+            
+            if (music) {
+                music.volume = 0.25; // Suara lembut — bisa ubah 0.1 s/d 1.0
+                
+                // Coba main otomatis
+                const playPromise = music.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        isPlaying = true;
+                        if (toggleBtn) toggleBtn.textContent = '🔇 Matikan Musik';
+                    }).catch(() => {
+                        isPlaying = false;
+                        if (toggleBtn) toggleBtn.textContent = '🔊 Nyalakan Musik';
+                    });
+                }
+            }
+            
+            // Tombol nyala/mati
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function() {
+                    if (!music) return;
+                    if (isPlaying) {
+                        music.pause();
+                        toggleBtn.textContent = '🔊 Nyalakan Musik';
+                    } else {
+                        music.play();
+                        toggleBtn.textContent = '🔇 Matikan Musik';
+                    }
+                    isPlaying = !isPlaying;
+                });
+            }
         });
     </script>
 </head>
 <body class="bg-cream text-dark font-sans">
+    <!-- Musik Latar -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="fairytale-musik.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung pemutar musik.
+    
+
+    <!-- Tombol Musik -->
+    <button class="music-btn" id="musicToggle">🔊 Nyalakan Musik</button>
+
     <nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
             <a href="#beranda" class="flex items-center gap-2">
@@ -173,7 +240,6 @@
             </div>
         </div>
     </nav>
-
     <section id="beranda" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 pattern-dot">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <div>
@@ -201,7 +267,6 @@
             </div>
         </div>
     </section>
-
     <section id="tentang" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-3xl mx-auto text-center">
             <h2 class="font-display text-2xl font-semibold mb-4">Tentang De'tails Attelier</h2>
@@ -217,7 +282,6 @@
             </p>
         </div>
     </section>
-
     <section id="karya" class="py-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-10">
@@ -244,7 +308,6 @@
                         </button>
                     </div>
                 </div>
-
                 <!-- Karya 2: Starry Night -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
@@ -263,7 +326,6 @@
                         </button>
                     </div>
                 </div>
-
                 <!-- Karya 3: Island Girl -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
@@ -286,7 +348,6 @@
             <p class="text-center mt-8 text-dark/50 text-sm">Tambahkan karya lainnya nanti ✏️</p>
         </div>
     </section>
-
     <section id="ide" class="py-16 px-4 sm:px-6 lg:px-8 bg-warm/20">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-8">
@@ -310,7 +371,6 @@
             </div>
         </div>
     </section>
-
     <section id="hubungi" class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white">
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
@@ -331,17 +391,14 @@
             <p class="text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
         </div>
     </section>
-
     <footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
         <p>© 2026 De'tails Attelier — Semua karya dibuat dengan Ibis Paint 🖌️</p>
     </footer>
-
     <!-- Zoom Overlay -->
     <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
         <img id="gambarZoom" src="" alt="">
         <div class="zoom-watermark"></div>
     </div>
-
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -349,7 +406,6 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
-
         function bukaZoom(src) {
             const overlay = document.getElementById('zoomOverlay');
             const gambar = document.getElementById('gambarZoom');
