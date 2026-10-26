@@ -32,41 +32,25 @@
     </script>
     
     <style>
-        .music-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(249,245,240,0.95);
-            border: 1px solid #C89F73;
-            color: #8B7355;
-            padding: 0.6rem 1rem;
-            border-radius: 50px;
-            z-index: 9999;
-            cursor: pointer;
+        .pattern-dot {
+            background-image: radial-gradient(#E8DED2 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .card-hover {
             transition: all 0.3s ease;
         }
-        .music-btn:hover { background: #C89F73; color: white; }
-        .pattern-dot { background-image: radial-gradient(#E8DED2 1px, transparent 1px); background-size: 20px 20px; }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(139,115,85,0.15); }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 115, 85, 0.15);
+        }
     </style>
 </head>
 <body class="bg-cream text-dark font-sans">
 
-    <!-- Musik Latar — Sudah Diperbaiki Penutupannya -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="fairytale-musik.mp3" type="audio/mpeg">
-    
-
-    <!-- Tombol Musik -->
-    <button class="music-btn" id="musicToggle">🔊 Nyalakan Musik</button>
-
     <!-- Navigasi -->
     <nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#beranda" class="flex items-center gap-2">
-                <span class="font-display font-bold text-xl">De'tails Attelier</span>
-            </a>
+            <a href="#beranda" class="font-display font-bold text-xl">De'tails Attelier</a>
             <div class="hidden md:flex gap-6 text-sm">
                 <a href="#beranda" class="hover:text-cocoa">Beranda</a>
                 <a href="#tentang" class="hover:text-cocoa">Tentang</a>
@@ -116,7 +100,7 @@
             
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-4xl text-cocoa/50">
+                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-5xl">
                         🦋
                     </div>
                     <div class="p-5">
@@ -126,7 +110,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-4xl text-cocoa/50">
+                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-5xl">
                         🌙
                     </div>
                     <div class="p-5">
@@ -136,7 +120,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-4xl text-cocoa/50">
+                    <div class="aspect-square bg-warm/30 flex items-center justify-center text-5xl">
                         🏝️
                     </div>
                     <div class="p-5">
@@ -167,7 +151,7 @@
             </div>
             
             <p class="text-sm text-gray-300 mb-2">Hubungi saya ✉️</p>
-            <a href="mailto:detailssattelier@gmail.com" class="text-accent text-lg font-bold">
+            <a href="mailto:detailssattelier@gmail.com" class="text-accent text-lg font-medium">
                 detailssattelier@gmail.com
             </a>
             
@@ -183,33 +167,11 @@
     </footer>
 
     <script>
-        // Musik
-        document.addEventListener('DOMContentLoaded', function() {
-            const music = document.getElementById('bgMusic');
-            const toggleBtn = document.getElementById('musicToggle');
-            let isPlaying = false;
-            
-            if (music) music.volume = 0.25;
-            
-            if (toggleBtn && music) {
-                toggleBtn.addEventListener('click', function() {
-                    if (isPlaying) {
-                        music.pause();
-                        toggleBtn.textContent = '🔊 Nyalakan Musik';
-                    } else {
-                        music.play();
-                        toggleBtn.textContent = '🔇 Matikan Musik';
-                    }
-                    isPlaying = !isPlaying;
-                });
-            }
-            
-            // Smooth scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                });
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
