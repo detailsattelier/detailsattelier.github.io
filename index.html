@@ -112,39 +112,78 @@
     </style>
     
     <script>
-        function getLikes(id) {
-            return parseInt(localStorage.getItem('likes_' + id) || '0');
-        }
+        // Pakai layanan penghitung publik — angka SAMA untuk SEMUA pengunjung
+        const BASE_URL = "https://api.countapi.xyz/hit/detailsattelier/";
         
-        function setLikes(id, jumlah) {
-            localStorage.setItem('likes_' + id, jumlah);
-        }
+        // Daftar karya
+        const KARYA = {
+            karya1: { nama: "Black Butterfly", awal: 1 },
+            karya2: { nama: "Starry Night", awal: 1 },
+            karya3: { nama: "Island Girl", awal: 1 }
+        };
         
-        function sudahDisukai(id) {
-            return localStorage.getItem('sudahSuka_' + id) === 'true';
-        }
-        
-        function tambahSuka(id) {
-            if (!sudahDisukai(id)) {
-                let jumlah = getLikes(id) + 1;
-                setLikes(id, jumlah);
-                localStorage.setItem('sudahSuka_' + id, 'true');
-                document.getElementById('jumlah-' + id).textContent = jumlah;
-                document.getElementById('hati-' + id).classList.add('liked');
-                document.getElementById('hati-' + id).textContent = '♥';
+        // Ambil angka suka dari server
+        async function muatSuka(id) {
+            try {
+                const res = await fetch(BASE_URL + id);
+                const data = await res.json();
+                return data.value;
+            } catch (e) {
+                // Kalau gagal, pakai nilai awal
+                return KARYA[id].awal;
             }
         }
         
-        document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3'].forEach(function(id) {
-                const jumlahEl = document.getElementById('jumlah-' + id);
-                if (jumlahEl) jumlahEl.textContent = getLikes(id);
-                const hatiEl = document.getElementById('hati-' + id);
-                if (hatiEl && sudahDisukai(id)) {
-                    hatiEl.classList.add('liked');
-                    hatiEl.textContent = '♥';
+        // Tambah suka ke server (bisa sekali per pengunjung)
+        async function kirimSuka(id) {
+            const sudah = localStorage.getItem(`suka_${id}`);
+            if (sudah) {
+                alert("Kamu sudah menyukai karya ini ya! 🤎");
+                return null;
+            }
+            
+            try {
+                const res = await fetch(BASE_URL + id + "/increment");
+                const data = await res.json();
+                localStorage.setItem(`suka_${id}`, "ya");
+                return data.value;
+            } catch (e) {
+                return null;
+            }
+        }
+        
+        // Tampilkan angka suka
+        async function tampilkanSuka(id) {
+            const jumlah = await muatSuka(id);
+            const el = document.getElementById(`jumlah-${id}`);
+            if (el) el.textContent = jumlah;
+            
+            // Tandai sudah disukai di perangkat ini
+            const sudah = localStorage.getItem(`suka_${id}`);
+            const hati = document.getElementById(`hati-${id}`);
+            if (hati && sudah) {
+                hati.classList.add("liked");
+                hati.textContent = "♥";
+            }
+        }
+        
+        // Tekan tombol suka
+        async function tambahSuka(id) {
+            const jumlahBaru = await kirimSuka(id);
+            if (jumlahBaru !== null) {
+                const el = document.getElementById(`jumlah-${id}`);
+                if (el) el.textContent = jumlahBaru;
+                const hati = document.getElementById(`hati-${id}`);
+                if (hati) {
+                    hati.classList.add("liked");
+                    hati.textContent = "♥";
                 }
-            });
+            }
+        }
+        
+        // Jalankan saat halaman terbuka
+        document.addEventListener("DOMContentLoaded", function() {
+            Object.keys(KARYA).forEach(id => tampilkanSuka(id));
         });
     </script>
 </head>
@@ -216,7 +255,7 @@
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-10">
                 <h2 class="font-display text-2xl font-semibold mb-3">Karya & Sketsa</h2>
-                <p class="text-dark/60 max-w-xl mx-auto text-sm">Klik gambar untuk memperbesar • Klik ♡ untuk menyukai ✨</p>
+                <p class="text-dark/60 max-w-xl mx-auto text-sm">Klik gambar untuk memperbesar • Klik ♡ untuk menyukai ✨ Angka terlihat sama untuk semua pengunjung!</p>
                 <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -275,88 +314,4 @@
                             <span id="jumlah-karya3" class="font-semibold">0</span>
                         </button>
                     </div>
-                </div>
-            </div>
-            <p class="text-center mt-8 text-dark/50 text-sm">Tambahkan karya lainnya nanti ✏️</p>
-        </div>
-    </section>
-
-    <section id="ide" class="py-16 px-4 sm:px-6 lg:px-8 bg-warm/20">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-8">
-                <h2 class="font-display text-2xl font-semibold mb-3">Catatan Ide</h2>
-                <p class="text-dark/60 text-sm">Sumber inspirasi di balik setiap karya</p>
-                <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
-            </div>
-            <div class="space-y-5">
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Kupu-kupu Hitam</h3>
-                    <p class="text-dark/70 text-sm">Keindahan yang tenang dan misterius — kupu-kupu hitam mengajarkan bahwa keindahan tidak selalu harus terang untuk bersinar.</p>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Langit Malam Van Gogh</h3>
-                    <p class="text-dark/70 text-sm">Langit yang berputar, bintang yang berkilauan — bukti bahwa malam pun bisa penuh cahaya dan keindahan yang tak lekang oleh waktu.</p>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Island Girl</h3>
-                    <p class="text-dark/70 text-sm">Terinspirasi dari Esther Geraldine — keanggunan yang alami, hangat, dan mempesona seperti pulau yang damai.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="hubungi" class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
-            <p class="text-gray-300 mb-6 text-sm">Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨</p>
-            
-            <div class="flex justify-center gap-5 mb-8">
-                <a href="https://www.instagram.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="https://pin.it/2TqFqCe9A" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-pinterest"></i>
-                </a>
-                <a href="https://x.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-twitter"></i>
-                </a>
-            </div>
-            
-            <p class="text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
-        </div>
-    </section>
-
-    <footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
-        <p>© 2026 De'tails Attelier — Semua karya dibuat dengan Ibis Paint 🖌️</p>
-    </footer>
-
-    <!-- Zoom Overlay -->
-    <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
-        <img id="gambarZoom" src="" alt="">
-        <div class="zoom-watermark"></div>
-    </div>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        function bukaZoom(src) {
-            const overlay = document.getElementById('zoomOverlay');
-            const gambar = document.getElementById('gambarZoom');
-            gambar.src = src;
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function tutupZoom() {
-            const overlay = document.getElementById('zoomOverlay');
-            overlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-    </script>
-</body>
-</html>
+                </div
