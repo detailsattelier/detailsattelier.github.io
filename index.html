@@ -146,26 +146,30 @@
             justify-content: center;
             cursor: zoom-out;
         }
-        .zoom-overlay.active {
-            display: flex;
+      .zoom-overlay.active { display: flex; }
+.zoom-inner {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+.zoom-inner img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
         }
-        .zoom-overlay img {
-            max-width: 90%;
-            max-height: 90vh;
-            object-fit: contain;
-        }
-        .zoom-watermark {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 150px;
-            height: 50px;
-            background-image: url('./da-logo.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: bottom right;
-            opacity: 0.25;
-            pointer-events: none;
+      .zoom-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background-image: url('./da-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.12;
+    pointer-events: none;
         }
     </style>
     
@@ -415,12 +419,18 @@
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        
+        A
         function tutupZoom() {
             const overlay = document.getElementById('zoomOverlay');
             overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
     </script>
+    <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
+    <div class="zoom-inner">
+        <img id="gambarZoom" src="" alt="">
+        <div class="zoom-watermark"></div>
+    </div>
+</div>
 </body>
 </html>
