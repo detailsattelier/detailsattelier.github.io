@@ -44,7 +44,7 @@
     <style>
         <style>
 /* Wadah gambar + watermark */
-.karya-container {
+.karya-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -53,7 +53,7 @@
 }
 
 /* Watermark di tengah — tetap ada saat disimpan */
-.karya-container::before {
+.karya-wrapper::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -70,7 +70,7 @@
     z-index: 10;
 }
 
-.karya-container img {
+.karya-wrapper img {
     position: relative;
     z-index: 5;
     width: 100%;
@@ -100,7 +100,7 @@
     pointer-events: none;
 }
 </style>
-        .karya-container {
+        .karya-wrapper {
             position: relative;
             width: 100%;
             height: 100%;
@@ -108,7 +108,7 @@
             cursor: zoom-in;
         }
         
-        .karya-container::before {
+        .karya-wrapper::before {
             content: '';
             position: absolute;
             top: 0;
@@ -124,7 +124,7 @@
             z-index: 1;
         }
         
-        .karya-container img {
+        .karya-wrapper img {
             position: relative;
             z-index: 2;
             width: 100%;
@@ -268,7 +268,7 @@
                 Hai! Saya Stefen — seorang yang memiliki impian besar untuk menjadi ikon fashion yang dikenal banyak orang. Perjalanan ini dimulai dari sini.
             </p>
             <p class="mb-4 text-base leading-relaxed">
-                Semua karya di sini dibuat dengan tulus menggunakan <strong>Ibis Paint</strong> di HP. Tidak butuh alat mahal untuk berkarya — yang dibutuhkan hanya hati, ketekunan, dan imajinasi ✨
+                Semua karya di sini dibuat dengan tulus menggunakan <strong>Ibis Paint</strong>. Tidak butuh alat mahal untuk berkarya — yang dibutuhkan hanya hati, ketekunan, dan imajinasi ✨
             </p>
             <p class="text-base italic text-cocoa">
                 "Setiap detail menceritakan kisah."
