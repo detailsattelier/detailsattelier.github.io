@@ -42,6 +42,64 @@
     </style>
     
     <style>
+        <style>
+/* Wadah gambar + watermark */
+.karya-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    cursor: zoom-in;
+}
+
+/* Watermark di tengah — tetap ada saat disimpan */
+.karya-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 45%;
+    background-image: url('./da-logo.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    opacity: 0.12;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.karya-container img {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Watermark saat diperbesar */
+.zoom-inner {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+}
+.zoom-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 40%;
+    background-image: url('./da-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.12;
+    pointer-events: none;
+}
+</style>
         .karya-container {
             position: relative;
             width: 100%;
@@ -229,7 +287,7 @@
                 <!-- Karya 1: Black Butterfly -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
-                        <div class="karya-container" onclick="bukaZoom('black-butterfly.png')">
+                        <div class="karya-wrapper" onclick="bukaZoom('black-butterfly.png')">
                             <img src="black-butterfly.png" alt="Black Butterfly">
                         </div>
                     </div>
@@ -248,7 +306,7 @@
                 <!-- Karya 2: Starry Night -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
-                        <div class="karya-container" onclick="bukaZoom('starry-night.png')">
+                        <div class="karya-wrapper" onclick="bukaZoom('starry-night.png')">
                             <img src="starry-night.png" alt="Starry Night — Terinspirasi Van Gogh">
                         </div>
                     </div>
@@ -267,7 +325,7 @@
                 <!-- Karya 3: Island Girl -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
                     <div class="aspect-square bg-warm/30 flex items-center justify-center text-cocoa/50">
-                        <div class="karya-container" onclick="bukaZoom('island-girl.png')">
+                        <div class="karya-wrapper" onclick="bukaZoom('island-girl.png')">
                             <img src="island-girl.png" alt="Island Girl — Terinspirasi Esther Geraldine">
                         </div>
                     </div>
