@@ -42,63 +42,7 @@
     </style>
     
     <style>
-/* Wadah gambar + watermark */
-.karya-wrapper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: block;
-    cursor: zoom-in;
-}
-
-/* Watermark di tengah — tetap ada saat disimpan */
-.karya-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 45%;
-    height: 45%;
-    background-image: url('./da-logo.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    opacity: 0.12;
-    pointer-events: none;
-    z-index: 10;
-}
-
-.karya-wrapper img {
-    position: relative;
-    z-index: 5;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-}
-
-/* Watermark saat diperbesar */
-.zoom-inner {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
-}
-.zoom-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 40%;
-    background-image: url('./da-logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    opacity: 0.12;
-    pointer-events: none;
-}
-</style>
+        /* Wadah gambar + watermark — versi final */
         .karya-wrapper {
             position: relative;
             width: 100%;
@@ -106,32 +50,34 @@
             display: block;
             cursor: zoom-in;
         }
-        
+
         .karya-wrapper::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45%;
+            height: 45%;
             background-image: url('./da-logo.png');
             background-repeat: no-repeat;
             background-position: center center;
-            background-size: 160% auto;
-            opacity: 0.15;
+            background-size: contain;
+            opacity: 0.12;
             pointer-events: none;
-            z-index: 1;
+            z-index: 10;
         }
-        
+
         .karya-wrapper img {
             position: relative;
-            z-index: 2;
+            z-index: 5;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: transform 0.3s ease;
+            display: block;
         }
-        
+
+        /* Zoom overlay */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -145,30 +91,33 @@
             justify-content: center;
             cursor: zoom-out;
         }
-      .zoom-overlay.active { display: flex; }
-.zoom-inner {
-    position: relative;
-    max-width: 90%;
-    max-height: 90vh;
-}
-.zoom-inner img {
-    max-width: 100%;
-    max-height: 85vh;
-    object-fit: contain;
+        .zoom-overlay.active { 
+            display: flex; 
         }
-      .zoom-watermark {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 40%;
-    background-image: url('./da-logo.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    opacity: 0.12;
-    pointer-events: none;
+        .zoom-inner {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+        .zoom-inner img {
+            display: block;
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+        .zoom-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40%;
+            height: 40%;
+            background-image: url('./da-logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.12;
+            pointer-events: none;
         }
     </style>
     
@@ -347,31 +296,7 @@
             <p class="text-center mt-8 text-dark/50 text-sm">Tambahkan karya lainnya nanti ✏️</p>
         </div>
     </section>
-
-    <section id="ide" class="py-16 px-4 sm:px-6 lg:px-8 bg-warm/20">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center mb-8">
-                <h2 class="font-display text-2xl font-semibold mb-3">Catatan Ide</h2>
-                <p class="text-dark/60 text-sm">Sumber inspirasi di balik setiap karya</p>
-                <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
-            </div>
-            <div class="space-y-5">
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Kupu-kupu Hitam</h3>
-                    <p class="text-dark/70 text-sm">Keindahan yang tenang dan misterius — kupu-kupu hitam mengajarkan bahwa keindahan tidak selalu harus terang untuk bersinar.</p>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Langit Malam Van Gogh</h3>
-                    <p class="text-dark/70 text-sm">Langit yang berputar, bintang yang berkilauan — bukti bahwa malam pun bisa penuh cahaya dan keindahan yang tak lekang oleh waktu.</p>
-                </div>
-                <div class="bg-white p-5 rounded-xl shadow-sm">
-                    <h3 class="font-semibold text-base mb-2">✨ Island Girl</h3>
-                    <p class="text-dark/70 text-sm">Terinspirasi dari Esther Geraldine — keanggunan yang alami, hangat, dan mempesona seperti pulau yang damai.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <section id="hubungi" class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white">
         <div class="max-w-2xl mx-auto text-center">
             <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
