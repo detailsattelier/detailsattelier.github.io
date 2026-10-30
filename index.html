@@ -42,30 +42,15 @@
     </style>
     
     <style>
-        /* Wadah gambar karya + watermark */
+                /* Wadah karya — blokir unduhan */
         .karya-wrapper {
             position: relative;
             width: 100%;
             height: 100%;
             display: block;
             cursor: zoom-in;
-        }
-
-        .karya-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 45%;
-            height: 45%;
-            background-image: url('da-logo.png');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: contain;
-            opacity: 0.08; /* Lebih halus */
-            pointer-events: none;
-            z-index: 10;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .karya-wrapper img {
@@ -75,9 +60,14 @@
             height: 100%;
             object-fit: contain;
             display: block;
+            pointer-events: none; /* Blokir klik kanan di gambar */
+            -webkit-user-drag: none; /* Blokir seret-simpan */
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -ms-user-drag: none;
         }
 
-        /* Zoom overlay */
+        /* Overlay Zoom */
         .zoom-overlay {
             display: none;
             position: fixed;
@@ -90,6 +80,7 @@
             align-items: center;
             justify-content: center;
             cursor: zoom-out;
+            user-select: none;
         }
         .zoom-overlay.active { 
             display: flex; 
@@ -98,25 +89,29 @@
             position: relative;
             max-width: 90%;
             max-height: 90vh;
+            pointer-events: none;
         }
         .zoom-inner img {
             display: block;
             max-width: 100%;
             max-height: 85vh;
             object-fit: contain;
+            pointer-events: none;
+            -webkit-user-drag: none;
         }
+        /* Watermark TIPIS saat zoom */
         .zoom-watermark {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 40%;
-            height: 40%;
+            width: 45%;
+            height: 45%;
             background-image: url('da-logo.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.08; /* Sama halusnya */
+            opacity: 0.06; /* Sangat tipis */
             pointer-events: none;
         }
     </style>
