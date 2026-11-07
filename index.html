@@ -441,6 +441,41 @@ document.addEventListener('keydown', function(e) {
       </div>
     </div>
     <!-- ==================== AKHIR KARYA 5 ==================== -->
+
+        <!-- ==================== KARYA 6: Midnight ==================== -->
+    <div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+        <!-- Area Gambar — rasio & ukuran seragam -->
+        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+          <div class="karya-wrapper" onclick="bukaZoom('Starry Night')">
+            <img 
+              src="midnight.png" 
+              alt="Midnight"
+              draggable="false"
+              ondragstart="return false;"
+              oncontextmenu="return false;"
+              class="w-full h-full object-contain"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
+      <div class="p-4">
+        <h3 class="font-semibold text-base mb-2">Midnight 🌌</h3>
+        <p class="text-sm text-dark/60 mb-3">Saat langit malam menyentuh permukaan laguna yang tenang..</p>
+        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+        <button 
+          onclick="tambahSuka('karya6')" 
+          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
+        >
+          <span id="hati-karya6" class="heart-btn text-lg">🖤</span>
+          <span>Suka</span>
+          <span id="jumlah-karya6" class="font-semibold">0</span>
+        </button>
+      </div>
+    </div>
+    <!-- ==================== AKHIR KARYA 5 ==================== -->
                
 
             <p class="text-center mt-8 text-dark/50 text-sm">Nantikan Updated Karyaku lainya ✏️</p>
