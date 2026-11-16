@@ -177,7 +177,7 @@ document.addEventListener('keydown', function(e) {
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3'].forEach(function(id) {
+            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9'].forEach(function(id) {
                 const elJumlah = document.getElementById('jumlah-' + id);
                 const elHati = document.getElementById('hati-' + id);
                 if (elJumlah) elJumlah.textContent = getLikes(id);
@@ -271,7 +271,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('black-butterfly')">
+          <div class="karya-wrapper" onclick="bukaZoom('black-butterfly.png')">
             <img 
               src="black-butterfly.png" 
               alt="Black Butterfly"
@@ -306,7 +306,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Starry Night')">
+          <div class="karya-wrapper" onclick="bukaZoom('starry-night.png')">
             <img 
               src="starry-night.png" 
               alt="Starry Night"
@@ -341,7 +341,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Starry Night')">
+          <div class="karya-wrapper" onclick="bukaZoom('island-girl.png')">
             <img 
               src="island-girl.png" 
               alt="Island Girl"
@@ -377,7 +377,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Starry Night')">
+          <div class="karya-wrapper" onclick="bukaZoom('lagoon-dawn.png')">
             <img 
               src="lagoon-dawn.png" 
               alt="Lagoon Dawn"
@@ -412,7 +412,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Starry Night')">
+          <div class="karya-wrapper" onclick="bukaZoom('noir heritage.png')">
             <img 
               src="noir-heritage.png" 
               alt="Noir Heritage"
@@ -447,7 +447,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Starry Night')">
+          <div class="karya-wrapper" onclick="bukaZoom('midnight.png')">
             <img 
               src="midnight.png" 
               alt="Midnight"
@@ -483,7 +483,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Blossom')">
+          <div class="karya-wrapper" onclick="bukaZoom('blossom.png')">
             <img 
               src="blossom.png" 
               alt="Blossom"
@@ -518,7 +518,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Day & Night')">
+          <div class="karya-wrapper" onclick="bukaZoom('day-and-night.png')">
             <img 
               src="day-and-night.png" 
               alt="Day & Night"
@@ -553,7 +553,7 @@ document.addEventListener('keydown', function(e) {
       <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
         <!-- Area Gambar — rasio & ukuran seragam -->
         <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('Emerald Mermaid')">
+          <div class="karya-wrapper" onclick="bukaZoom('emerald-mermaid.png')">
             <img 
               src="emerald-mermaid.png" 
               alt="Emerald Mermaid"
@@ -615,12 +615,6 @@ document.addEventListener('keydown', function(e) {
         <p>© 2026 De'tails Attelier — Semua karya dibuat dengan Ibis Paint 🖌️</p>
     </footer>
 
-    <!-- Zoom Overlay -->
-    <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
-        <img id="gambarZoom" src="" alt="">
-        <div class="zoom-watermark"></div>
-    </div>
-
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -636,7 +630,7 @@ document.addEventListener('keydown', function(e) {
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        A
+        
         function tutupZoom() {
             const overlay = document.getElementById('zoomOverlay');
             overlay.classList.remove('active');
