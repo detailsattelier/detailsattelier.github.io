@@ -241,30 +241,33 @@ document.addEventListener('keydown', function(e) {
         </div>
     </nav>
 
-    <section id="beranda" class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 pattern-dot">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-            <div>
+    <section id="beranda" class="relative isolate overflow-hidden py-28 sm:py-32 px-4 sm:px-6 lg:px-8">
+        <!-- Video logo menjadi latar bergerak yang lembut dan sedikit blur -->
+        <div class="absolute inset-0 -z-20 overflow-hidden" aria-hidden="true">
+            <video src="logo-bergerak.mp4" autoplay loop muted playsinline
+                class="w-full h-full object-cover scale-110 blur-md opacity-35">
+                De'tails Attelier
+            </video>
+        </div>
+        <!-- Lapisan warna agar teks tetap jelas terbaca -->
+        <div class="absolute inset-0 -z-10 bg-[#F8F3EC]/75"></div>
+        <div class="absolute inset-0 -z-10 pattern-dot opacity-40"></div>
+
+        <div class="max-w-4xl mx-auto flex flex-col items-center text-center">
+            <div class="max-w-3xl">
                 <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold mb-5">
                     Setiap detail<br>
                     <span class="text-cocoa">menceritakan kisah</span>
                 </h1>
-                <p class="text-base mb-6 max-w-lg leading-relaxed">
+                <p class="text-base mb-6 mx-auto max-w-lg leading-relaxed">
                     Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint.
                 </p>
                 <a href="#karya" class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg">
                     Lihat Karya Saya <i class="fa fa-arrow-right ml-2 text-sm"></i>
                 </a>
             </div>
-            <div class="relative">
-                <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-xl bg-white flex items-center justify-center p-4">
-                    <video src="logo-bergerak.mp4" autoplay loop muted playsinline class="w-full max-w-[280px] mx-auto">
-                        De'tails Attelier
-                    </video>
-                </div>
-                <div class="absolute -bottom-3 -left-3 bg-white p-3 rounded-lg shadow-md">
-                    <p class="text-xs text-dark/50">Dibuat dengan</p>
-                    <p class="font-semibold text-cocoa text-sm">Ibis Paint 🖌️</p>
-                </div>
+            <div class="mt-9 bg-white/70 backdrop-blur-sm border border-white/60 px-4 py-2 rounded-full shadow-sm">
+                <p class="text-xs text-cocoa">Dibuat dengan Ibis Paint 🖌️</p>
             </div>
         </div>
     </section>
