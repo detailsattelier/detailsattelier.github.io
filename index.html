@@ -177,7 +177,7 @@ document.addEventListener('keydown', function(e) {
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9'].forEach(function(id) {
+            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10'].forEach(function(id) {
                 const elJumlah = document.getElementById('jumlah-' + id);
                 const elHati = document.getElementById('hati-' + id);
                 if (elJumlah) elJumlah.textContent = getLikes(id);
@@ -652,6 +652,39 @@ document.addEventListener('keydown', function(e) {
     </div>
     <!-- ==================== AKHIR KARYA 9 ==================== -->
 
+
+    <!-- ==================== KARYA 10: Velvet Pixie ==================== -->
+    <div>
+      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+          <div class="karya-wrapper" onclick="bukaZoom('velvet-pixie.png')">
+            <img
+              src="velvet-pixie.png"
+              alt="Velvet Pixie"
+              draggable="false"
+              ondragstart="return false;"
+              oncontextmenu="return false;"
+              class="w-full h-full object-contain"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <h3 class="font-semibold text-base mb-2">Velvet Pixie 🧚</h3>
+        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari butterfly fairy — sosok peri yang magis, misterius, dan feminin. Perpaduan ungu, magenta, burgundy, dan hitam berpadu dengan siluet korset asimetris, detail menyerupai urat sayap kupu-kupu, serta tekstur jaring transparan.</p>
+        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+        <button
+          onclick="tambahSuka('karya10')"
+          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
+        >
+          <span id="hati-karya10" class="heart-btn text-lg">🖤</span>
+          <span>Suka</span>
+          <span id="jumlah-karya10" class="font-semibold">0</span>
+        </button>
+      </div>
+    </div>
+    <!-- ==================== AKHIR KARYA 10 ==================== -->
 
             </div><!-- akhir grid galeri -->
             <p class="text-center mt-8 text-dark/50 text-sm">Nantikan Updated Karyaku lainya ✏️</p>
