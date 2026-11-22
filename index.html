@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="id">
+
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De'tails Attelier</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>De'tails Attelier</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -29,8 +29,7 @@
             }
         }
     </script>
-    
-    <style type="text/tailwindcss">
+<style type="text/tailwindcss">
         @layer utilities {
             .text-shadow-sm { text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
             .card-hover { transition: all 0.3s ease; }
@@ -40,8 +39,7 @@
             .heart-btn.liked { color: #c0392b; transform: scale(1.2); }
         }
     </style>
-    
-    <style>
+<style>
                 /* Wadah karya — blokir unduhan */
         .karya-wrapper {
             position: relative;
@@ -118,8 +116,7 @@
             pointer-events: none;
         }
     </style>
-    
-    <script>
+<script>
         // Penyimpanan yang tetap terjaga
         function getLikes(id) {
             const data = localStorage.getItem('likes_' + id);
@@ -177,7 +174,7 @@ document.addEventListener('keydown', function(e) {
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10'].forEach(function(id) {
+            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10', 'karya11', 'karya12'].forEach(function(id) {
                 const elJumlah = document.getElementById('jumlah-' + id);
                 const elHati = document.getElementById('hati-' + id);
                 if (elJumlah) elJumlah.textContent = getLikes(id);
@@ -188,8 +185,7 @@ document.addEventListener('keydown', function(e) {
             });
         });
     </script>
-
-    <style>
+<style>
         .flipbook-overlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(24,20,18,.94);align-items:center;justify-content:center;padding:18px;}
         .flipbook-overlay.active{display:flex;}
         .flipbook-shell{width:min(100%,760px);color:#F9F5F0;}
@@ -210,549 +206,433 @@ document.addEventListener('keydown', function(e) {
         @media(max-width:520px){.flipbook-overlay{padding:12px}.flipbook-page{width:86vw;height:62vh;min-height:300px}.flipbook-stage{min-height:62vh}.flipbook-top{font-size:12px}}
         @media(prefers-reduced-motion:reduce){.flipbook-page.turn-next,.flipbook-page.turn-prev{animation-duration:.01ms}}
     </style>
-
 </head>
 <body class="bg-cream text-dark font-sans">
-    <nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
-            <a href="#beranda" class="flex items-center gap-2">
-                <img src="da-logo.png" alt="DA Logo" class="h-7 w-auto">
-                <span class="font-display text-base font-semibold">De'tails Attelier</span>
-            </a>
-            <button id="menuToggle" type="button" class="md:hidden text-dark text-xl p-2" aria-label="Buka menu" aria-expanded="false" aria-controls="mobileMenu">
-                <i id="menuIcon" class="fa fa-bars" aria-hidden="true"></i>
-            </button>
-            <div class="hidden md:flex gap-6 text-sm tracking-wide">
-                <a href="#beranda" class="hover:text-cocoa transition-colors">Beranda</a>
-                <a href="#tentang" class="hover:text-cocoa transition-colors">Tentang</a>
-                <a href="#karya" class="hover:text-cocoa transition-colors">Karya</a>
-                <a href="#collections" class="hover:text-cocoa transition-colors">Collection</a>
-                <a href="#ide" class="hover:text-cocoa transition-colors">Catatan Ide</a>
-                <a href="#hubungi" class="hover:text-cocoa transition-colors">Hubungi</a>
-            </div>
-        </div>
-        <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-sm bg-cream">
-            <a href="#beranda" class="hover:text-cocoa transition-colors">Beranda</a>
-            <a href="#tentang" class="hover:text-cocoa transition-colors">Tentang</a>
-            <a href="#karya" class="hover:text-cocoa transition-colors">Karya</a>
-            <a href="#collections" class="hover:text-cocoa transition-colors">Collection</a>
-            <a href="#ide" class="hover:text-cocoa transition-colors">Catatan Ide</a>
-            <a href="#hubungi" class="hover:text-cocoa transition-colors">Hubungi</a>
-        </div>
-    </nav>
-
- 
-<section id="beranda" class="relative isolate overflow-hidden py-28 sm:py-32 px-4 sm:px-6 lg:px-8">
-
-    <!-- VIDEO LOGO BLUR BACKGROUND -->
-    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <video
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            class="absolute inset-0 w-full h-full object-cover"
-            style="filter: blur(5px); opacity: 0.45; transform: scale(1.08);"
-        >
-            <source src="./logo-bergerak.mp4" type="video/mp4">
-        </video>
-    </div>
-
-    <!-- SOFT CREAM OVERLAY -->
-    <div class="absolute inset-0 z-10 bg-[#F8F3EC]/65 pointer-events-none"></div>
-
-    <!-- SUBTLE PATTERN -->
-    <div class="absolute inset-0 z-10 pattern-dot opacity-30 pointer-events-none"></div>
-
-    <!-- OPENING TEXT -->
-    <div class="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center">
-
-        <div class="max-w-3xl">
-            <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold mb-5">
-                Setiap detail<br>
-                <span class="text-cocoa">menceritakan kisah</span>
-            </h1>
-
-            <p class="text-base mb-6 mx-auto max-w-lg leading-relaxed">
-                Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint.
-            </p>
-
-            <a href="#karya"
-                class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg">
+<div class="fixed top-[4.7rem] right-4 z-[60]">
+<button aria-label="Switch website language to Indonesian" class="flex items-center gap-2 rounded-full border border-[#C89F73]/60 bg-[#F9F5F0]/95 px-3 py-2 text-xs font-medium tracking-wide text-[#2C231B] shadow-md backdrop-blur-sm hover:bg-white transition" id="languageToggle" type="button">
+<i aria-hidden="true" class="fa fa-globe"></i>
+<span id="languageLabel">EN</span>
+<span class="text-[#8B7355]">|</span>
+<span>ID</span>
+</button>
+</div><nav class="fixed top-0 left-0 w-full bg-cream/90 backdrop-blur-sm z-50 border-b border-warm/50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
+<a class="flex items-center gap-2" href="#beranda">
+<img alt="DA Logo" class="h-7 w-auto" src="da-logo.png"/>
+<span class="font-display text-base font-semibold">De'tails Attelier</span>
+</a>
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="md:hidden text-dark text-xl p-2" data-en-aria-label="Open menu" data-id-aria-label="Buka menu" id="menuToggle" type="button">
+<i aria-hidden="true" class="fa fa-bars" id="menuIcon"></i>
+</button>
+<div class="hidden md:flex gap-6 text-sm tracking-wide">
+<a class="hover:text-cocoa transition-colors" data-en="Home" data-id="Beranda" href="#beranda">Home</a>
+<a class="hover:text-cocoa transition-colors" data-en="About" data-id="Tentang" href="#tentang">About</a>
+<a class="hover:text-cocoa transition-colors" data-en="Artwork" data-id="Karya" href="#karya">Artwork</a>
+<a class="hover:text-cocoa transition-colors" href="#collections">Collection</a>
+<a class="hover:text-cocoa transition-colors" data-en="Creative Notes" data-id="Catatan Ide" href="#ide">Creative Notes</a>
+<a class="hover:text-cocoa transition-colors" data-en="Connect" data-id="Hubungi" href="#hubungi">Connect</a>
+</div>
+</div>
+<div class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-sm bg-cream" id="mobileMenu">
+<a class="hover:text-cocoa transition-colors" data-en="Home" data-id="Beranda" href="#beranda">Home</a>
+<a class="hover:text-cocoa transition-colors" data-en="About" data-id="Tentang" href="#tentang">About</a>
+<a class="hover:text-cocoa transition-colors" data-en="Artwork" data-id="Karya" href="#karya">Artwork</a>
+<a class="hover:text-cocoa transition-colors" href="#collections">Collection</a>
+<a class="hover:text-cocoa transition-colors" data-en="Creative Notes" data-id="Catatan Ide" href="#ide">Creative Notes</a>
+<a class="hover:text-cocoa transition-colors" data-en="Connect" data-id="Hubungi" href="#hubungi">Connect</a>
+</div>
+</nav>
+<section class="relative isolate overflow-hidden py-28 sm:py-32 px-4 sm:px-6 lg:px-8" id="beranda">
+<!-- VIDEO LOGO BLUR BACKGROUND -->
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<video autoplay="" class="absolute inset-0 w-full h-full object-cover" loop="" muted="" playsinline="" preload="auto" style="filter: blur(5px); opacity: 0.45; transform: scale(1.08);">
+<source src="./logo-bergerak.mp4" type="video/mp4"/>
+</video>
+</div>
+<!-- SOFT CREAM OVERLAY -->
+<div class="absolute inset-0 z-10 bg-[#F8F3EC]/65 pointer-events-none"></div>
+<!-- SUBTLE PATTERN -->
+<div class="absolute inset-0 z-10 pattern-dot opacity-30 pointer-events-none"></div>
+<!-- OPENING TEXT -->
+<div class="relative z-20 max-w-4xl mx-auto flex flex-col items-center text-center">
+<div class="max-w-3xl">
+<h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold mb-5" data-en-html='Every detail&lt;br&gt;&lt;span class="text-cocoa"&gt;tells a story&lt;/span&gt;' data-id-html='Setiap detail&lt;br&gt;&lt;span class="text-cocoa"&gt;menceritakan kisah&lt;/span&gt;'>Every detail<br/><span class="text-cocoa">tells a story</span></h1>
+<p class="text-base mb-6 mx-auto max-w-lg leading-relaxed" data-en="Welcome to De'tails Attelier — where ideas come to life through heartfelt strokes in Ibis Paint." data-id="Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint.">Welcome to De'tails Attelier — where ideas come to life through heartfelt strokes in Ibis Paint.</p>
+<a class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg" href="#karya">
                 Lihat Karya Saya <i class="fa fa-arrow-right ml-2 text-sm"></i>
-            </a>
-        </div>
-
-        <div class="mt-9 bg-white/70 backdrop-blur-sm border border-white/60 px-4 py-2 rounded-full shadow-sm">
-            <p class="text-xs text-cocoa">Dibuat dengan Ibis Paint 🖌️</p>
-        </div>
-
-    </div>
+</a>
+</div>
+<div class="mt-9 bg-white/70 backdrop-blur-sm border border-white/60 px-4 py-2 rounded-full shadow-sm">
+<p class="text-xs text-cocoa" data-en="Created with Ibis Paint 🖌️" data-id="Dibuat dengan Ibis Paint 🖌️">Created with Ibis Paint 🖌️</p>
+</div>
+</div>
 </section>
-
-
-    <section id="tentang" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="font-display text-2xl font-semibold mb-4">Tentang De'tails Attelier</h2>
-            <div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
-            <p class="mb-4 text-base leading-relaxed">
-                Hai! Saya Stefen — seorang yang memiliki impian besar untuk menjadi ikon fashion yang dikenal banyak orang. Perjalanan ini dimulai dari sini.
-            </p>
-            <p class="mb-4 text-base leading-relaxed">
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white" id="tentang">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-display text-2xl font-semibold mb-4" data-en="About De'tails Attelier" data-id="Tentang De'tails Attelier">About De'tails Attelier</h2>
+<div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
+<p class="mb-4 text-base leading-relaxed" data-en="Hello! I'm Stefen — an aspiring fashion creative with a big dream of making a name in the world of fashion. This is where my journey begins." data-id="Hai! Saya Stefen — seorang yang memiliki impian besar untuk menjadi ikon fashion yang dikenal banyak orang. Perjalanan ini dimulai dari sini.">Hello! I'm Stefen — an aspiring fashion creative with a big dream of making a name in the world of fashion. This is where my journey begins.</p>
+<p class="mb-4 text-base leading-relaxed">
                 Semua karya di sini dibuat dengan tulus menggunakan <strong>Ibis Paint</strong>. Tidak butuh alat mahal untuk berkarya — yang dibutuhkan hanya hati, ketekunan, dan imajinasi ✨
             </p>
-            <p class="text-base italic text-cocoa">
+<p class="text-base italic text-cocoa">
                 "Setiap detail menceritakan kisah."
             </p>
-        </div>
-    </section>
-
-
-    <section id="collections" class="py-16 px-4 sm:px-6 lg:px-8 bg-[#F1E9DF]">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-10">
-                <p class="text-xs tracking-[0.35em] uppercase text-cocoa mb-3">Curated works · De'tails Attelier</p>
-                <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3">My Collections</h2>
-                <p class="text-dark/60 max-w-xl mx-auto text-sm">Kumpulan karya pilihan yang disusun menjadi sebuah cerita visual.</p>
-                <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
-            </div>
-            <div class="max-w-sm mx-auto">
-                <button type="button" onclick="bukaCollection()" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" aria-label="Buka flipbook Nocturnal Lagoon">
-                    <div class="collection-cover relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-[#211E1D] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_55px_rgba(44,35,27,0.28)]">
-                        <div class="absolute inset-3 border border-[#C7A77E]/50 pointer-events-none"></div>
-                        <div class="absolute inset-5 border border-white/10 pointer-events-none"></div>
-                        <div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-[#C7A77E]/20"></div>
-                        <div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#C7A77E]/20"></div>
-                        <div class="relative text-center mt-5">
-                            <p class="text-[9px] tracking-[0.4em] uppercase text-[#C7A77E]">De'tails Attelier presents</p>
-                        </div>
-                        <div class="relative text-center">
-                            <p class="font-display italic text-4xl sm:text-5xl leading-tight">Nocturnal<br>Lagoon</p>
-                            <div class="w-12 h-px bg-[#C7A77E] mx-auto my-5"></div>
-                            <p class="text-[9px] tracking-[0.3em] uppercase text-white/70">A fashion illustration collection</p>
-                        </div>
-                        <div class="relative text-center mb-4">
-                            <p class="text-[10px] tracking-[0.25em] text-[#C7A77E]">VOL. 01 · 8 ARTWORKS</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-between mt-4 px-1">
-                        <div>
-                            <h3 class="font-display text-xl text-dark">Nocturnal Lagoon</h3>
-                            <p class="text-xs text-dark/50 mt-1">8 selected illustrations</p>
-                        </div>
-                        <span class="text-cocoa text-sm tracking-wide group-hover:translate-x-1 transition-transform">Open book <i class="fa fa-arrow-right ml-1"></i></span>
-                    </div>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <section id="karya" class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-10">
-                <h2 class="font-display text-2xl font-semibold mb-3">Karya & Sketsa</h2>
-                <p class="text-dark/60 max-w-xl mx-auto text-sm">Klik gambar untuk memperbesar • Klik ♡ untuk menyukai ✨</p>
-                <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
-            </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- Semua kartu karya berada di dalam grid galeri -->
-    <!-- ==================== KARYA 1: Black Butterfly ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('black-butterfly.png')">
-            <img 
-              src="black-butterfly.png" 
-              alt="Black Butterfly"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Black Butterfly 🦋</h3>
-        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari keindahan sayap kupu-kupu hitam — anggun, misterius, dan memukau.</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya1')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya1" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya1" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 1 ==================== -->
-
-       <!-- ==================== KARYA 2: Starry Night ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('starry-night.png')">
-            <img 
-              src="starry-night.png" 
-              alt="Starry Night"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Starry Night 🌙</h3>
-        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari lukisan legendaris The Starry Night karya Vincent van Gogh — langit malam yang bercerita.</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya2')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya2" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya2" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 2 ==================== -->
-
-       <!-- ==================== KARYA 3: Island Girl ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('island-girl.png')">
-            <img 
-              src="island-girl.png" 
-              alt="Island Girl"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Island Girl 🏝️</h3>
-        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari Esther Geraldine — keindahan kulitnya yang eksotis mencerminkan pesona wanita Indonesia, dipadukan dengan gaya busana yang memancarkan kehangatan warna-warna alam yang membumi.</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya3')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya3" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya3" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 3 ==================== -->
-
-
-         <!-- ==================== KARYA 4: Lagoon Dawn ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('lagoon-dawn.png')">
-            <img 
-              src="lagoon-dawn.png" 
-              alt="Lagoon Dawn"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Lagoon Dawn 🌅</h3>
-        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari cahaya fajar yang menyentuh permukaan laguna, warna fajar yang lembut di padupadankan dengan mutiara.</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya4')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya4" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya4" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 4 ==================== -->
-
-        <!-- ==================== KARYA 5: Noir Heritage ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('noir-heritage.png')">
-            <img 
-              src="noir-heritage.png" 
-              alt="Noir Heritage"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Noir Heritage ⚜️</h3>
-        <p class="text-sm text-dark/60 mb-3">Dimana warisan budaya bertemu dengan sentuhan modern — melahirkan karakter yang kuat, perpaduan motif batik bernuansa cokelat keemasan dengan struktur korset.</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya5')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya5" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya5" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 5 ==================== -->
-
-        <!-- ==================== KARYA 6: Midnight ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('midnight.png')">
-            <img 
-              src="midnight.png" 
-              alt="Midnight"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Midnight 🌌</h3>
-        <p class="text-sm text-dark/60 mb-3">Saat langit malam menyentuh permukaan laguna yang tenang..</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya6')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya6" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya6" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 6 ==================== -->
-
-      
-               <!-- ==================== KARYA 7: Blossom ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('blossom.png')">
-            <img 
-              src="blossom.png" 
-              alt="Blossom"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Blossom 🌸</h3>
-        <p class="text-sm text-dark/60 mb-3">terinspirasi bunga yang mekar di tengah ketenangan laguna malam, penuh kelembutan embun dan pesona alami..</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya7')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya7" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya7" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 7 ==================== -->
-
-      <!-- ==================== KARYA 8: Day & Night ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('day-and-night.png')">
-            <img 
-              src="day-and-night.png" 
-              alt="Day & Night"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Day & Night 🌓</h3>
-        <p class="text-sm text-dark/60 mb-3">Perpaduan magis siang dan malam, kontras terang dan gelap yang menghidupkan keindahan peralihan waktu..</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya8')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya8" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya8" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 8 ==================== -->
-
-      <!-- ==================== KARYA 9: Emerald Mermaid ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <!-- Area Gambar — rasio & ukuran seragam -->
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('emerald-mermaid.png')">
-            <img 
-              src="emerald-mermaid.png" 
-              alt="Emerald Mermaid"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Area Teks & Tombol — jarak & ukuran seragam -->
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Emerald Mermaid 🧜</h3>
-        <p class="text-sm text-dark/60 mb-3">Pesona mermaid laut dalam dengan kilau zamrud yang memukau, membawa keajaiban kedalaman laguna malam ke busana..</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button 
-          onclick="tambahSuka('karya9')" 
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya9" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya9" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 9 ==================== -->
-
-
-    <!-- ==================== KARYA 10: Velvet Pixie ==================== -->
-    <div>
-      <div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
-        <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
-          <div class="karya-wrapper" onclick="bukaZoom('velvet-pixie.png')">
-            <img
-              src="velvet-pixie.png"
-              alt="Velvet Pixie"
-              draggable="false"
-              ondragstart="return false;"
-              oncontextmenu="return false;"
-              class="w-full h-full object-contain"
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="p-4">
-        <h3 class="font-semibold text-base mb-2">Velvet Pixie 🧚</h3>
-        <p class="text-sm text-dark/60 mb-3">Terinspirasi dari butterfly fairy — sosok peri yang magis, misterius, dan feminin. Perpaduan ungu, magenta, burgundy, dan hitam berpadu dengan siluet korset asimetris, detail menyerupai urat sayap kupu-kupu, serta tekstur jaring transparan.</p>
-        <span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
-        <button
-          onclick="tambahSuka('karya10')"
-          class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition"
-        >
-          <span id="hati-karya10" class="heart-btn text-lg">🖤</span>
-          <span>Suka</span>
-          <span id="jumlah-karya10" class="font-semibold">0</span>
-        </button>
-      </div>
-    </div>
-    <!-- ==================== AKHIR KARYA 10 ==================== -->
-
-            </div><!-- akhir grid galeri -->
-            <p class="text-center mt-8 text-dark/50 text-sm">Nantikan Updated Karyaku lainya ✏️</p>
-        </div>
-    </section>
-    
-    <section id="ide" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="font-display text-2xl font-semibold mb-4">Catatan Ide</h2>
-            <div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
-            <p class="text-base leading-relaxed text-dark/70">
-                Setiap sketsa berawal dari sebuah ide. Detail kain, potongan, tekstur, ornamen, dan perpaduan warna menjadi bagian dari proses eksplorasi kreatif De'tails Attelier.
-            </p>
-            <p class="mt-4 text-base italic text-cocoa">
+</div>
+</section>
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#F1E9DF]" id="collections">
+<div class="max-w-6xl mx-auto">
+<div class="text-center mb-10">
+<p class="text-xs tracking-[0.35em] uppercase text-cocoa mb-3" data-en="Curated works · De'tails Attelier" data-id="Curated works · De'tails Attelier">Curated works · De'tails Attelier</p>
+<h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3">My Collections</h2>
+<p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="A curated selection of artworks, brought together to tell a visual story." data-id="Kumpulan karya pilihan yang disusun menjadi sebuah cerita visual.">A curated selection of artworks, brought together to tell a visual story.</p>
+<div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
+</div>
+<div class="max-w-sm mx-auto">
+<button aria-label="Open the Nocturnal Lagoon flipbook" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" data-id-aria-label="Buka flipbook Nocturnal Lagoon" onclick="bukaCollection()" type="button">
+<div class="collection-cover relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-[#211E1D] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_55px_rgba(44,35,27,0.28)]">
+<div class="absolute inset-3 border border-[#C7A77E]/50 pointer-events-none"></div>
+<div class="absolute inset-5 border border-white/10 pointer-events-none"></div>
+<div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-[#C7A77E]/20"></div>
+<div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#C7A77E]/20"></div>
+<div class="relative text-center mt-5">
+<p class="text-[9px] tracking-[0.4em] uppercase text-[#C7A77E]">De'tails Attelier presents</p>
+</div>
+<div class="relative text-center">
+<p class="font-display italic text-4xl sm:text-5xl leading-tight">Nocturnal<br/>Lagoon</p>
+<div class="w-12 h-px bg-[#C7A77E] mx-auto my-5"></div>
+<p class="text-[9px] tracking-[0.3em] uppercase text-white/70">A fashion illustration collection</p>
+</div>
+<div class="relative text-center mb-4">
+<p class="text-[10px] tracking-[0.25em] text-[#C7A77E]">VOL. 01 · 8 ARTWORKS</p>
+</div>
+</div>
+<div class="flex items-center justify-between mt-4 px-1">
+<div>
+<h3 class="font-display text-xl text-dark">Nocturnal Lagoon</h3>
+<p class="text-xs text-dark/50 mt-1" data-en="8 selected illustrations" data-id="8 selected illustrations">8 selected illustrations</p>
+</div>
+<span class="text-cocoa text-sm tracking-wide group-hover:translate-x-1 transition-transform">Open book <i class="fa fa-arrow-right ml-1"></i></span>
+</div>
+</button>
+</div>
+</div>
+</section>
+<section class="py-16 px-4 sm:px-6 lg:px-8" id="karya">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-10">
+<h2 class="font-display text-2xl font-semibold mb-3" data-en="Artworks &amp; Sketches" data-id="Karya &amp; Sketsa">Artworks &amp; Sketches</h2>
+<p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="Click an image to enlarge • Click ♡ to like ✨" data-id="Klik gambar untuk memperbesar • Klik ♡ untuk menyukai ✨">Click an image to enlarge • Click ♡ to like ✨</p>
+<div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Semua kartu karya berada di dalam grid galeri -->
+<!-- ==================== KARYA 1: Black Butterfly ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('black-butterfly.png')">
+<img alt="Black Butterfly" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="black-butterfly.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Black Butterfly 🦋</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by the beauty of black butterfly wings — graceful, mysterious, and captivating." data-id="Terinspirasi dari keindahan sayap kupu-kupu hitam — anggun, misterius, dan memukau.">Inspired by the beauty of black butterfly wings — graceful, mysterious, and captivating.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya1')">
+<span class="heart-btn text-lg" id="hati-karya1">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya1">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 1 ==================== -->
+<!-- ==================== KARYA 2: Starry Night ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('starry-night.png')">
+<img alt="Starry Night" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="starry-night.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Starry Night 🌙</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by Vincent van Gogh's legendary painting The Starry Night — a night sky filled with stories." data-id="Terinspirasi dari lukisan legendaris The Starry Night karya Vincent van Gogh — langit malam yang bercerita.">Inspired by Vincent van Gogh's legendary painting The Starry Night — a night sky filled with stories.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya2')">
+<span class="heart-btn text-lg" id="hati-karya2">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya2">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 2 ==================== -->
+<!-- ==================== KARYA 3: Island Girl ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('island-girl.png')">
+<img alt="Island Girl" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="island-girl.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Island Girl 🏝️</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by Esther Geraldine — her distinctive beauty reflects the charm of Indonesian women, paired with a fashion style that radiates the warmth of earthy, natural tones." data-id="Terinspirasi dari Esther Geraldine — keindahan kulitnya yang eksotis mencerminkan pesona wanita Indonesia, dipadukan dengan gaya busana yang memancarkan kehangatan warna-warna alam yang membumi.">Inspired by Esther Geraldine — her distinctive beauty reflects the charm of Indonesian women, paired with a fashion style that radiates the warmth of earthy, natural tones.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya3')">
+<span class="heart-btn text-lg" id="hati-karya3">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya3">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 3 ==================== -->
+<!-- ==================== KARYA 4: Lagoon Dawn ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('lagoon-dawn.png')">
+<img alt="Lagoon Dawn" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="lagoon-dawn.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Lagoon Dawn 🌅</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by the first light of dawn touching a lagoon, with soft sunrise hues paired with delicate pearls." data-id="Terinspirasi dari cahaya fajar yang menyentuh permukaan laguna, warna fajar yang lembut di padupadankan dengan mutiara.">Inspired by the first light of dawn touching a lagoon, with soft sunrise hues paired with delicate pearls.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya4')">
+<span class="heart-btn text-lg" id="hati-karya4">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya4">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 4 ==================== -->
+<!-- ==================== KARYA 5: Noir Heritage ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('noir-heritage.png')">
+<img alt="Noir Heritage" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="noir-heritage.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Noir Heritage ⚜️</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Where cultural heritage meets a modern touch — creating a strong identity through golden-brown batik motifs and a structured corset silhouette." data-id="Dimana warisan budaya bertemu dengan sentuhan modern — melahirkan karakter yang kuat, perpaduan motif batik bernuansa cokelat keemasan dengan struktur korset.">Where cultural heritage meets a modern touch — creating a strong identity through golden-brown batik motifs and a structured corset silhouette.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya5')">
+<span class="heart-btn text-lg" id="hati-karya5">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya5">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 5 ==================== -->
+<!-- ==================== KARYA 6: Midnight ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('midnight.png')">
+<img alt="Midnight" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="midnight.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Midnight 🌌</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="When the night sky meets the still surface of the lagoon." data-id="Saat langit malam menyentuh permukaan laguna yang tenang..">When the night sky meets the still surface of the lagoon.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya6')">
+<span class="heart-btn text-lg" id="hati-karya6">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya6">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 6 ==================== -->
+<!-- ==================== KARYA 7: Blossom ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('blossom.png')">
+<img alt="Blossom" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="blossom.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Blossom 🌸</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by flowers blooming in the stillness of a moonlit lagoon, surrounded by dewdrop softness and natural charm." data-id="terinspirasi bunga yang mekar di tengah ketenangan laguna malam, penuh kelembutan embun dan pesona alami..">Inspired by flowers blooming in the stillness of a moonlit lagoon, surrounded by dewdrop softness and natural charm.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya7')">
+<span class="heart-btn text-lg" id="hati-karya7">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya7">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 7 ==================== -->
+<!-- ==================== KARYA 8: Day & Night ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('day-and-night.png')">
+<img alt="Day &amp; Night" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="day-and-night.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Day &amp; Night 🌓</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="A magical blend of day and night, where light and darkness bring the beauty of transition to life." data-id="Perpaduan magis siang dan malam, kontras terang dan gelap yang menghidupkan keindahan peralihan waktu..">A magical blend of day and night, where light and darkness bring the beauty of transition to life.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya8')">
+<span class="heart-btn text-lg" id="hati-karya8">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya8">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 8 ==================== -->
+<!-- ==================== KARYA 9: Emerald Mermaid ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<!-- Area Gambar — rasio & ukuran seragam -->
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('emerald-mermaid.png')">
+<img alt="Emerald Mermaid" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="emerald-mermaid.png"/>
+</div>
+</div>
+</div>
+<!-- Area Teks & Tombol — jarak & ukuran seragam -->
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Emerald Mermaid 🧜</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="The allure of a deep-sea mermaid, adorned with captivating emerald shimmer, bringing the magic of a midnight lagoon into fashion." data-id="Pesona mermaid laut dalam dengan kilau zamrud yang memukau, membawa keajaiban kedalaman laguna malam ke busana..">The allure of a deep-sea mermaid, adorned with captivating emerald shimmer, bringing the magic of a midnight lagoon into fashion.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya9')">
+<span class="heart-btn text-lg" id="hati-karya9">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya9">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 9 ==================== -->
+<!-- ==================== KARYA 10: Velvet Pixie ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('velvet-pixie.png')">
+<img alt="Velvet Pixie" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="velvet-pixie.png"/>
+</div>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Velvet Pixie 🧚</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by the butterfly fairy — a magical, mysterious, and feminine being. Shades of purple, magenta, burgundy, and black meet an asymmetrical corset silhouette, butterfly-wing vein details, and sheer net textures." data-id="Terinspirasi dari butterfly fairy — sosok peri yang magis, misterius, dan feminin. Perpaduan ungu, magenta, burgundy, dan hitam berpadu dengan siluet korset asimetris, detail menyerupai urat sayap kupu-kupu, serta tekstur jaring transparan.">Inspired by the butterfly fairy — a magical, mysterious, and feminine being. Shades of purple, magenta, burgundy, and black meet an asymmetrical corset silhouette, butterfly-wing vein details, and sheer net textures.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya10')">
+<span class="heart-btn text-lg" id="hati-karya10">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya10">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 10 ==================== -->
+<!-- ==================== KARYA 11: Verdant Nymph ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('verdant-nymph.png')">
+<img alt="Verdant Nymph" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="verdant-nymph.png"/>
+</div>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Verdant Nymph 🌿</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by the Nature Nymph — a graceful guardian of nature's beauty. Emerald tones, floral elements, and intricate embellishments evoke the magic of the natural world." data-id="Terinspirasi dari Nature Nymph — sosok penjaga keindahan alam yang anggun. Nuansa hijau zamrud, elemen floral, dan detail ornamen menghadirkan pesona alam yang magis.">Inspired by the Nature Nymph — a graceful guardian of nature's beauty. Emerald tones, floral elements, and intricate embellishments evoke the magic of the natural world.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya11')">
+<span class="heart-btn text-lg" id="hati-karya11">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya11">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 11 ==================== -->
+<!-- ==================== KARYA 12: Abyssal Starlight ==================== -->
+<div>
+<div class="bg-white rounded-xl overflow-hidden shadow-md card-hover">
+<div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50">
+<div class="karya-wrapper" onclick="bukaZoom('abyssal-starlight.png')">
+<img alt="Abyssal Starlight" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="abyssal-starlight.png"/>
+</div>
+</div>
+</div>
+<div class="p-4">
+<h3 class="font-semibold text-base mb-2">Abyssal Starlight ✨</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="Inspired by the mystery of the deepest ocean, where the beauty of the sea meets starlight in an elegant and enchanting fantasy." data-id="Terinspirasi dari misteri samudra terdalam, tempat keindahan laut dan cahaya bintang berpadu dalam suasana fantasi yang anggun dan memikat.">Inspired by the mystery of the deepest ocean, where the beauty of the sea meets starlight in an elegant and enchanting fantasy.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span>
+<button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya12')">
+<span class="heart-btn text-lg" id="hati-karya12">🖤</span>
+<span data-en="Like" data-id="Suka">Like</span>
+<span class="font-semibold" id="jumlah-karya12">0</span>
+</button>
+</div>
+</div>
+<!-- ==================== AKHIR KARYA 12 ==================== -->
+</div><!-- akhir grid galeri -->
+<p class="text-center mt-8 text-dark/50 text-sm" data-en="More artworks coming soon ✏️" data-id="Nantikan Updated Karyaku lainya ✏️">More artworks coming soon ✏️</p>
+</div>
+</section>
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white" id="ide">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-display text-2xl font-semibold mb-4" data-en="Creative Notes" data-id="Catatan Ide">Creative Notes</h2>
+<div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
+<p class="text-base leading-relaxed text-dark/70" data-en="Every sketch begins with an idea. Fabric details, cuts, textures, embellishments, and color combinations are all part of De'tails Attelier's creative exploration." data-id="Setiap sketsa berawal dari sebuah ide. Detail kain, potongan, tekstur, ornamen, dan perpaduan warna menjadi bagian dari proses eksplorasi kreatif De'tails Attelier.">Every sketch begins with an idea. Fabric details, cuts, textures, embellishments, and color combinations are all part of De'tails Attelier's creative exploration.</p>
+<p class="mt-4 text-base italic text-cocoa">
                 "Ide sederhana dapat menjadi karya yang istimewa ketika setiap detail diperhatikan."
             </p>
-        </div>
-    </section>
-
-    <section id="hubungi" class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="font-display text-2xl font-semibold mb-4">Ikuti Perjalananku</h2>
-            <p class="text-gray-300 mb-6 text-sm">Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨</p>
-            
-            <div class="flex justify-center gap-5 mb-8">
-                <a href="https://www.instagram.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-instagram"></i>
-                </a>
-                <a href="https://pin.it/2TqFqCe9A" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-pinterest"></i>
-                </a>
-                <a href="https://x.com/detailsattelier" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm">
-                    <i class="fa fa-twitter"></i>
-                </a>
-            </div>
-            
-            <p class="text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br>"Setiap detail menceritakan kisah."</p>
-        </div>
-    </section>
-
-    <footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
-        <p>© 2026 De'tails Attelier — Semua karya dibuat dengan Ibis Paint 🖌️</p>
-    </footer>
-
-    <script>
+</div>
+</section>
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white" id="hubungi">
+<div class="max-w-2xl mx-auto text-center">
+<h2 class="font-display text-2xl font-semibold mb-4" data-en="Follow the Journey" data-id="Ikuti Perjalananku">Follow the Journey</h2>
+<p class="text-gray-300 mb-6 text-sm" data-en="Let's keep creating — every new piece is one step closer to the dream ✨" data-id="Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨">Let's keep creating — every new piece is one step closer to the dream ✨</p>
+<div class="flex justify-center gap-5 mb-8">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm" href="https://www.instagram.com/detailsattelier" target="_blank">
+<i class="fa fa-instagram"></i>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm" href="https://pin.it/2TqFqCe9A" target="_blank">
+<i class="fa fa-pinterest"></i>
+</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm" href="https://x.com/detailsattelier" target="_blank">
+<i class="fa fa-twitter"></i>
+</a>
+</div>
+<p class="text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br/>"Setiap detail menceritakan kisah."</p>
+</div>
+</section>
+<footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
+<p data-en="© 2026 De'tails Attelier — All artworks created with Ibis Paint 🖌️" data-id="© 2026 De'tails Attelier — Semua karya dibuat dengan Ibis Paint 🖌️">© 2026 De'tails Attelier — All artworks created with Ibis Paint 🖌️</p>
+</footer>
+<script>
         // Navigasi halus: hanya mencegah aksi default jika target memang tersedia.
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -893,38 +773,76 @@ document.addEventListener('keydown', function(e) {
         });
 
     </script>
-
-    <div id="flipbookOverlay" class="flipbook-overlay" role="dialog" aria-modal="true" aria-label="Nocturnal Lagoon collection" onclick="if(event.target===this) tutupCollection()">
-        <div class="flipbook-shell">
-            <div class="flipbook-top">
-                <div>
-                    <p class="font-display text-lg">Nocturnal Lagoon</p>
-                    <p class="text-[10px] tracking-[0.2em] uppercase text-white/55">De'tails Attelier · Collection 01</p>
-                </div>
-                <button type="button" class="flipbook-close" onclick="tutupCollection()" aria-label="Tutup flipbook">Close <i class="fa fa-times ml-1"></i></button>
-            </div>
-            <div class="flipbook-stage">
-                <div id="flipbookPage" class="flipbook-page">
-                    <img id="flipbookImage" class="flipbook-art" src="black-butterfly.png" alt="Black Butterfly" draggable="false">
-                    <div class="flipbook-caption">
-                        <p id="flipbookTitle" class="font-display text-2xl">Black Butterfly</p>
-                        <p id="flipbookCount" class="text-[10px] tracking-[0.25em] uppercase text-white/75 mt-1">01 / 08</p>
-                    </div>
-                </div>
-            </div>
-            <div class="flipbook-controls">
-                <button id="flipPrev" type="button" class="flipbook-btn" onclick="halamanCollection(-1)" aria-label="Halaman sebelumnya"><i class="fa fa-chevron-left"></i></button>
-                <span class="text-xs tracking-widest text-white/70">TURN THE PAGE</span>
-                <button id="flipNext" type="button" class="flipbook-btn" onclick="halamanCollection(1)" aria-label="Halaman berikutnya"><i class="fa fa-chevron-right"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <div id="zoomOverlay" class="zoom-overlay" onclick="tutupZoom()">
-    <div class="zoom-inner">
-        <img id="gambarZoom" src="" alt="">
-        <div class="zoom-watermark"></div>
-    </div>
+<div aria-label="Nocturnal Lagoon collection" aria-modal="true" class="flipbook-overlay" id="flipbookOverlay" onclick="if(event.target===this) tutupCollection()" role="dialog">
+<div class="flipbook-shell">
+<div class="flipbook-top">
+<div>
+<p class="font-display text-lg">Nocturnal Lagoon</p>
+<p class="text-[10px] tracking-[0.2em] uppercase text-white/55">De'tails Attelier · Collection 01</p>
 </div>
+<button aria-label="Close flipbook" class="flipbook-close" data-id-aria-label="Tutup flipbook" onclick="tutupCollection()" type="button">Close <i class="fa fa-times ml-1"></i></button>
+</div>
+<div class="flipbook-stage">
+<div class="flipbook-page" id="flipbookPage">
+<img alt="Black Butterfly" class="flipbook-art" draggable="false" id="flipbookImage" src="black-butterfly.png"/>
+<div class="flipbook-caption">
+<p class="font-display text-2xl" id="flipbookTitle">Black Butterfly</p>
+<p class="text-[10px] tracking-[0.25em] uppercase text-white/75 mt-1" id="flipbookCount">01 / 08</p>
+</div>
+</div>
+</div>
+<div class="flipbook-controls">
+<button aria-label="Previous page" class="flipbook-btn" data-id-aria-label="Halaman sebelumnya" id="flipPrev" onclick="halamanCollection(-1)" type="button"><i class="fa fa-chevron-left"></i></button>
+<span class="text-xs tracking-widest text-white/70">TURN THE PAGE</span>
+<button aria-label="Next page" class="flipbook-btn" data-id-aria-label="Halaman berikutnya" id="flipNext" onclick="halamanCollection(1)" type="button"><i class="fa fa-chevron-right"></i></button>
+</div>
+</div>
+</div>
+<div class="zoom-overlay" id="zoomOverlay" onclick="tutupZoom()">
+<div class="zoom-inner">
+<img alt="" id="gambarZoom" src=""/>
+<div class="zoom-watermark"></div>
+</div>
+</div>
+
+<script>
+(function () {
+  let currentLanguage = 'en';
+  const toggle = document.getElementById('languageToggle');
+  const label = document.getElementById('languageLabel');
+
+  function setLanguage(language) {
+    currentLanguage = language;
+    document.documentElement.lang = language;
+
+    document.querySelectorAll('[data-en], [data-id]').forEach(function (element) {
+      const value = element.getAttribute(language === 'en' ? 'data-en' : 'data-id');
+      if (value !== null) element.textContent = value;
+    });
+
+    const hero = document.querySelector('#beranda h1');
+    if (hero) {
+      const markup = hero.getAttribute(language === 'en' ? 'data-en-html' : 'data-id-html');
+      if (markup) hero.innerHTML = markup;
+    }
+
+    document.querySelectorAll('[data-id-aria-label]').forEach(function (element) {
+      element.setAttribute('aria-label',
+        language === 'id' ? element.getAttribute('data-id-aria-label') :
+        (element.getAttribute('data-en-aria-label') || 'Open menu'));
+    });
+
+    if (label) label.textContent = language.toUpperCase();
+    if (toggle) toggle.setAttribute('aria-label',
+      language === 'en' ? 'Switch website language to Indonesian' : 'Ganti bahasa website ke Inggris');
+  }
+
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      setLanguage(currentLanguage === 'en' ? 'id' : 'en');
+    });
+  }
+})();
+</script>
 </body>
 </html>
