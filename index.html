@@ -229,6 +229,8 @@ document.addEventListener('keydown', function(e) {
 <a class="hover:text-cocoa transition-colors" data-en="About" data-id="Tentang" href="#tentang">About</a>
 <a class="hover:text-cocoa transition-colors" data-en="Artwork" data-id="Karya" href="#karya">Artwork</a>
 <a class="hover:text-cocoa transition-colors" href="#collections">Collection</a>
+<a class="hover:text-cocoa transition-colors" data-en="Services" data-id="Layanan" href="#services">Services</a>
+<a class="hover:text-cocoa transition-colors" data-en="Services" data-id="Layanan" href="#services">Services</a>
 <a class="hover:text-cocoa transition-colors" data-en="Creative Notes" data-id="Catatan Ide" href="#ide">Creative Notes</a>
 <a class="hover:text-cocoa transition-colors" data-en="Connect" data-id="Hubungi" href="#hubungi">Connect</a>
 </div>
@@ -259,7 +261,7 @@ document.addEventListener('keydown', function(e) {
 <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold mb-5" data-en-html='Every detail&lt;br&gt;&lt;span class="text-cocoa"&gt;tells a story&lt;/span&gt;' data-id-html='Setiap detail&lt;br&gt;&lt;span class="text-cocoa"&gt;menceritakan kisah&lt;/span&gt;'>Every detail<br/><span class="text-cocoa">tells a story</span></h1>
 <p class="text-base mb-6 mx-auto max-w-lg leading-relaxed" data-en="Welcome to De'tails Attelier — where ideas come to life through heartfelt strokes in Ibis Paint." data-id="Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint.">Welcome to De'tails Attelier — where ideas come to life through heartfelt strokes in Ibis Paint.</p>
 <a class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg" href="#karya">
-                Lihat Karya Saya <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                <span data-en="Explore My Artworks" data-id="Lihat Karya Saya">Explore My Artworks</span> <i class="fa fa-arrow-right ml-2 text-sm"></i>
 </a>
 </div>
 <div class="mt-9 bg-white/70 backdrop-blur-sm border border-white/60 px-4 py-2 rounded-full shadow-sm">
@@ -272,12 +274,9 @@ document.addEventListener('keydown', function(e) {
 <h2 class="font-display text-2xl font-semibold mb-4" data-en="About De'tails Attelier" data-id="Tentang De'tails Attelier">About De'tails Attelier</h2>
 <div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
 <p class="mb-4 text-base leading-relaxed" data-en="Hello! I'm Stefen — an aspiring fashion creative with a big dream of making a name in the world of fashion. This is where my journey begins." data-id="Hai! Saya Stefen — seorang yang memiliki impian besar untuk menjadi ikon fashion yang dikenal banyak orang. Perjalanan ini dimulai dari sini.">Hello! I'm Stefen — an aspiring fashion creative with a big dream of making a name in the world of fashion. This is where my journey begins.</p>
-<p class="mb-4 text-base leading-relaxed">
-                Semua karya di sini dibuat dengan tulus menggunakan <strong>Ibis Paint</strong>. Tidak butuh alat mahal untuk berkarya — yang dibutuhkan hanya hati, ketekunan, dan imajinasi ✨
-            </p>
-<p class="text-base italic text-cocoa">
-                "Setiap detail menceritakan kisah."
-            </p>
+<p class="mb-4 text-base leading-relaxed" data-en="I develop fashion concepts through digital illustration, exploring silhouettes, fabric textures, embellishments, and thoughtful color stories. My creative process is built around the small details that give each design its own character." data-id="Saya mengembangkan konsep fashion melalui ilustrasi digital, dengan mengeksplorasi siluet, tekstur kain, ornamen, dan perpaduan warna. Proses kreatif saya berfokus pada detail-detail kecil yang memberi karakter pada setiap desain.">I develop fashion concepts through digital illustration, exploring silhouettes, fabric textures, embellishments, and thoughtful color stories. My creative process is built around the small details that give each design its own character.</p>
+<p class="mb-4 text-base leading-relaxed" data-en="Created with ibisPaint on a tablet, each artwork reflects my ongoing exploration as an independent fashion illustrator." data-id="Setiap karya dibuat menggunakan ibisPaint di tablet, sebagai bagian dari proses eksplorasi saya sebagai fashion illustrator independen.">Created with ibisPaint on a tablet, each artwork reflects my ongoing exploration as an independent fashion illustrator.</p>
+<p class="text-base italic text-cocoa" data-en="“Every detail tells a story.”" data-id="“Setiap detail menceritakan kisah.”">“Every detail tells a story.”</p>
 </div>
 </section>
 <section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#F1E9DF]" id="collections">
@@ -601,20 +600,57 @@ document.addEventListener('keydown', function(e) {
 <p class="text-center mt-8 text-dark/50 text-sm" data-en="More artworks coming soon ✏️" data-id="Nantikan Updated Karyaku lainya ✏️">More artworks coming soon ✏️</p>
 </div>
 </section>
+
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-white" id="services">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <p class="text-xs tracking-[0.35em] uppercase text-cocoa mb-3" data-en="What I can create" data-id="Yang dapat saya kerjakan">What I can create</p>
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-3" data-en="Creative Services" data-id="Layanan Kreatif">Creative Services</h2>
+      <p class="text-dark/60 max-w-2xl mx-auto text-sm" data-en="Creative support for fashion brands, independent labels, and visual storytelling projects." data-id="Dukungan kreatif untuk brand fashion, label independen, dan proyek visual storytelling.">Creative support for fashion brands, independent labels, and visual storytelling projects.</p>
+      <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <article class="bg-[#F9F5F0] p-6 rounded-xl border border-[#E8DED2]/70">
+        <div class="text-cocoa text-2xl mb-4"><i class="fa fa-pencil"></i></div>
+        <h3 class="font-display text-lg mb-2" data-en="Custom Fashion Illustration" data-id="Ilustrasi Fashion Custom">Custom Fashion Illustration</h3>
+        <p class="text-sm leading-relaxed text-dark/65" data-en="Original fashion illustrations developed from a creative brief, mood, or visual reference." data-id="Ilustrasi fashion orisinal yang dikembangkan berdasarkan brief kreatif, suasana, atau referensi visual.">Original fashion illustrations developed from a creative brief, mood, or visual reference.</p>
+      </article>
+      <article class="bg-[#F9F5F0] p-6 rounded-xl border border-[#E8DED2]/70">
+        <div class="text-cocoa text-2xl mb-4"><i class="fa fa-magic"></i></div>
+        <h3 class="font-display text-lg mb-2" data-en="Fashion Concept Development" data-id="Pengembangan Konsep Fashion">Fashion Concept Development</h3>
+        <p class="text-sm leading-relaxed text-dark/65" data-en="Visual exploration of themes, silhouettes, color palettes, and design direction." data-id="Eksplorasi visual tema, siluet, palet warna, dan arah desain.">Visual exploration of themes, silhouettes, color palettes, and design direction.</p>
+      </article>
+      <article class="bg-[#F9F5F0] p-6 rounded-xl border border-[#E8DED2]/70">
+        <div class="text-cocoa text-2xl mb-4"><i class="fa fa-diamond"></i></div>
+        <h3 class="font-display text-lg mb-2" data-en="Embellishment & Textile Details" data-id="Detail Ornamen & Tekstil">Embellishment &amp; Textile Details</h3>
+        <p class="text-sm leading-relaxed text-dark/65" data-en="Exploration of decorative details, fabric textures, beading, lace, and surface treatments." data-id="Eksplorasi detail dekoratif, tekstur kain, beads, lace, dan aplikasi permukaan.">Exploration of decorative details, fabric textures, beading, lace, and surface treatments.</p>
+      </article>
+      <article class="bg-[#F9F5F0] p-6 rounded-xl border border-[#E8DED2]/70">
+        <div class="text-cocoa text-2xl mb-4"><i class="fa fa-picture-o"></i></div>
+        <h3 class="font-display text-lg mb-2" data-en="Fashion Editorial Artwork" data-id="Artwork Editorial Fashion">Fashion Editorial Artwork</h3>
+        <p class="text-sm leading-relaxed text-dark/65" data-en="Illustrative visuals for fashion stories, creative campaigns, and brand content." data-id="Visual ilustratif untuk cerita fashion, kampanye kreatif, dan konten brand.">Illustrative visuals for fashion stories, creative campaigns, and brand content.</p>
+      </article>
+    </div>
+    <p class="text-center text-xs text-dark/50 mt-6" data-en="Project scope, deliverables, timeline, and usage rights can be discussed for each collaboration." data-id="Ruang lingkup proyek, hasil akhir, waktu pengerjaan, dan hak penggunaan dapat dibicarakan untuk setiap kerja sama.">Project scope, deliverables, timeline, and usage rights can be discussed for each collaboration.</p>
+  </div>
+</section>
+
 <section class="py-16 px-4 sm:px-6 lg:px-8 bg-white" id="ide">
 <div class="max-w-3xl mx-auto text-center">
 <h2 class="font-display text-2xl font-semibold mb-4" data-en="Creative Notes" data-id="Catatan Ide">Creative Notes</h2>
 <div class="w-16 h-0.5 bg-accent mx-auto mb-6"></div>
 <p class="text-base leading-relaxed text-dark/70" data-en="Every sketch begins with an idea. Fabric details, cuts, textures, embellishments, and color combinations are all part of De'tails Attelier's creative exploration." data-id="Setiap sketsa berawal dari sebuah ide. Detail kain, potongan, tekstur, ornamen, dan perpaduan warna menjadi bagian dari proses eksplorasi kreatif De'tails Attelier.">Every sketch begins with an idea. Fabric details, cuts, textures, embellishments, and color combinations are all part of De'tails Attelier's creative exploration.</p>
-<p class="mt-4 text-base italic text-cocoa">
-                "Ide sederhana dapat menjadi karya yang istimewa ketika setiap detail diperhatikan."
-            </p>
+<p class="mt-4 text-base italic text-cocoa" data-en="“A simple idea can become something special when every detail is thoughtfully considered.”" data-id="“Ide sederhana dapat menjadi karya yang istimewa ketika setiap detail diperhatikan.”">“A simple idea can become something special when every detail is thoughtfully considered.”</p>
 </div>
 </section>
 <section class="py-16 px-4 sm:px-6 lg:px-8 bg-dark text-white" id="hubungi">
 <div class="max-w-2xl mx-auto text-center">
-<h2 class="font-display text-2xl font-semibold mb-4" data-en="Follow the Journey" data-id="Ikuti Perjalananku">Follow the Journey</h2>
-<p class="text-gray-300 mb-6 text-sm" data-en="Let's keep creating — every new piece is one step closer to the dream ✨" data-id="Terus berkarya bersama — setiap karya baru adalah langkah lebih dekat ke mimpi ✨">Let's keep creating — every new piece is one step closer to the dream ✨</p>
+<h2 class="font-display text-2xl font-semibold mb-4" data-en="Let's Create Together" data-id="Mari Berkolaborasi">Let's Create Together</h2>
+<p class="text-gray-300 mb-3 text-sm" data-en="Have a project, collaboration idea, or commission inquiry? I'd love to hear about it." data-id="Punya proyek, ide kolaborasi, atau pertanyaan mengenai pemesanan ilustrasi? Saya senang mendengarnya.">Have a project, collaboration idea, or commission inquiry? I'd love to hear about it.</p>
+<p class="text-gray-400 mb-6 text-xs" data-en="For project discussions and collaboration inquiries, feel free to reach out through Instagram." data-id="Untuk diskusi proyek dan pertanyaan kerja sama, silakan hubungi saya melalui Instagram.">For project discussions and collaboration inquiries, feel free to reach out through Instagram.</p>
+<a class="inline-flex items-center gap-2 bg-[#C89F73] text-[#2C231B] px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#E8DED2] transition-colors mb-8" href="https://www.instagram.com/detailsattelier/" target="_blank" rel="noopener noreferrer">
+  <i class="fa fa-instagram"></i><span data-en="Discuss a Collaboration" data-id="Diskusikan Kerja Sama">Discuss a Collaboration</span>
+</a>
 <div class="flex justify-center gap-5 mb-8">
 <a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-cocoa transition-colors text-sm" href="https://www.instagram.com/detailsattelier" target="_blank">
 <i class="fa fa-instagram"></i>
@@ -626,7 +662,7 @@ document.addEventListener('keydown', function(e) {
 <i class="fa fa-twitter"></i>
 </a>
 </div>
-<p class="text-xs text-gray-400">Dibuat dengan tulus oleh De'tails Attelier 🤎<br/>"Setiap detail menceritakan kisah."</p>
+<p class="text-xs text-gray-400" data-en="Created with care by De'tails Attelier 🤎" data-id="Dibuat dengan tulus oleh De'tails Attelier 🤎">Created with care by De'tails Attelier 🤎<br/><span data-en="“Every detail tells a story.”" data-id="“Setiap detail menceritakan kisah.”">“Every detail tells a story.”</span></p>
 </div>
 </section>
 <footer class="bg-dark/90 text-white/60 py-4 text-center text-xs">
