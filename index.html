@@ -174,7 +174,7 @@ document.addEventListener('keydown', function(e) {
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10', 'karya11', 'karya12'].forEach(function(id) {
+            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10', 'karya11', 'karya12', 'karya13'].forEach(function(id) {
                 const elJumlah = document.getElementById('jumlah-' + id);
                 const elHati = document.getElementById('hati-' + id);
                 if (elJumlah) elJumlah.textContent = getLikes(id);
@@ -197,12 +197,18 @@ document.addEventListener('keydown', function(e) {
         @keyframes pageTurnNext{0%{transform:rotateY(0);filter:brightness(1)}50%{filter:brightness(.72)}100%{transform:rotateY(-82deg);filter:brightness(.6)}}
         @keyframes pageTurnPrev{0%{transform:rotateY(0);filter:brightness(1)}50%{filter:brightness(.72)}100%{transform:rotateY(82deg);filter:brightness(.6)}}
         .flipbook-art{width:100%;height:100%;object-fit:contain;background:#F4EEE7;display:block;user-select:none;-webkit-user-drag:none;}
-        .flipbook-caption{position:absolute;left:0;right:0;bottom:0;padding:22px 18px 15px;background:linear-gradient(transparent,rgba(20,17,15,.82));color:#fff;text-align:center;}
+        .flipbook-caption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 18px;background:linear-gradient(transparent,rgba(20,17,15,.82));color:#fff;text-align:center;}
         .flipbook-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px;}
         .flipbook-btn{width:42px;height:42px;border:1px solid rgba(249,245,240,.55);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#F9F5F0;transition:background .2s,opacity .2s;}
         .flipbook-btn:hover{background:rgba(255,255,255,.15)}
         .flipbook-btn:disabled{opacity:.3;cursor:not-allowed}
         .flipbook-close{color:#F9F5F0;border:1px solid rgba(249,245,240,.45);padding:8px 13px;border-radius:999px;font-size:12px;}
+
+        .collection-shelf{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.25rem .25rem 1.25rem;scrollbar-width:thin;scrollbar-color:#C89F73 #E8DED2;-webkit-overflow-scrolling:touch}
+        .collection-shelf>.collection-card{flex:0 0 min(82vw,320px);scroll-snap-align:center}
+        .flipbook-description{font-size:11px;line-height:1.5;max-width:34rem;margin:7px auto 0;color:rgba(255,255,255,.9)}
+        @media(min-width:768px){.collection-shelf{justify-content:center}.collection-shelf>.collection-card{flex-basis:300px}}
+
         @media(max-width:520px){.flipbook-overlay{padding:12px}.flipbook-page{width:86vw;height:62vh;min-height:300px}.flipbook-stage{min-height:62vh}.flipbook-top{font-size:12px}}
         @media(prefers-reduced-motion:reduce){.flipbook-page.turn-next,.flipbook-page.turn-prev{animation-duration:.01ms}}
     </style>
@@ -287,32 +293,29 @@ document.addEventListener('keydown', function(e) {
 <p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="A curated selection of artworks, brought together to tell a visual story." data-id="Kumpulan karya pilihan yang disusun menjadi sebuah cerita visual.">A curated selection of artworks, brought together to tell a visual story.</p>
 <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
 </div>
-<div class="max-w-sm mx-auto">
-<button aria-label="Open the Nocturnal Lagoon flipbook" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" data-id-aria-label="Buka flipbook Nocturnal Lagoon" onclick="bukaCollection()" type="button">
-<div class="collection-cover relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-[#211E1D] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_24px_55px_rgba(44,35,27,0.28)]">
-<div class="absolute inset-3 border border-[#C7A77E]/50 pointer-events-none"></div>
-<div class="absolute inset-5 border border-white/10 pointer-events-none"></div>
-<div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-[#C7A77E]/20"></div>
-<div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#C7A77E]/20"></div>
-<div class="relative text-center mt-5">
-<p class="text-[9px] tracking-[0.4em] uppercase text-[#C7A77E]">De'tails Attelier presents</p>
+<div class="collection-shelf" aria-label="Swipe to explore collections">
+<div class="collection-card">
+<button aria-label="Open the Nocturnal Lagoon flipbook" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaCollection('nocturnal')" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-[#211E1D] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-[#C7A77E]/50 pointer-events-none"></div><div class="absolute inset-5 border border-white/10 pointer-events-none"></div>
+<div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-[#C7A77E]/20"></div><div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#C7A77E]/20"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-[#C7A77E]">De'tails Attelier presents</p></div>
+<div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Nocturnal<br/>Lagoon</p><div class="w-12 h-px bg-[#C7A77E] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase text-white/70">A fashion illustration collection</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#C7A77E]">VOL. 01 · 8 ARTWORKS</p></div>
 </div>
-<div class="relative text-center">
-<p class="font-display italic text-4xl sm:text-5xl leading-tight">Nocturnal<br/>Lagoon</p>
-<div class="w-12 h-px bg-[#C7A77E] mx-auto my-5"></div>
-<p class="text-[9px] tracking-[0.3em] uppercase text-white/70">A fashion illustration collection</p>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Nocturnal Lagoon</h3><p class="text-xs text-dark/50 mt-1">8 selected illustrations</p></div><span class="text-cocoa text-sm">Open book <i class="fa fa-arrow-right ml-1"></i></span></div>
+</button>
 </div>
-<div class="relative text-center mb-4">
-<p class="text-[10px] tracking-[0.25em] text-[#C7A77E]">VOL. 01 · 8 ARTWORKS</p>
+<div class="collection-card">
+<button aria-label="Open the Fantasy Beings flipbook" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaCollection('fantasy')" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-gradient-to-br from-[#17251F] via-[#263D35] to-[#101A1A] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-[#B8C7A2]/50 pointer-events-none"></div><div class="absolute inset-5 border border-white/10 pointer-events-none"></div>
+<div class="absolute -top-12 -right-12 w-56 h-56 rounded-full border border-[#B8C7A2]/20"></div><div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full border border-[#B8C7A2]/20"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-[#C5D0B5]">De'tails Attelier presents</p></div>
+<div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Fantasy<br/>Beings</p><div class="w-12 h-px bg-[#B8C7A2] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase text-white/70">A world of mythical fashion</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#C5D0B5]">VOL. 02 · 4 ARTWORKS</p></div>
 </div>
-</div>
-<div class="flex items-center justify-between mt-4 px-1">
-<div>
-<h3 class="font-display text-xl text-dark">Nocturnal Lagoon</h3>
-<p class="text-xs text-dark/50 mt-1" data-en="8 selected illustrations" data-id="8 selected illustrations">8 selected illustrations</p>
-</div>
-<span class="text-cocoa text-sm tracking-wide group-hover:translate-x-1 transition-transform">Open book <i class="fa fa-arrow-right ml-1"></i></span>
-</div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Fantasy Beings</h3><p class="text-xs text-dark/50 mt-1">4 fantasy-inspired illustrations</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
 </div>
@@ -595,7 +598,13 @@ document.addEventListener('keydown', function(e) {
 </button>
 </div>
 </div>
-<!-- ==================== AKHIR KARYA 12 ==================== -->
+<!-- ==================== AKHIR KARYA 12 ==================== --><!-- ==================== KARYA 13: Fallen Grace ==================== -->
+<div><div class="bg-white rounded-xl overflow-hidden shadow-md card-hover"><div class="aspect-[3/4] bg-warm/30 flex items-center justify-center text-cocoa/50"><div class="karya-wrapper" onclick="bukaZoom('fallen-grace.png')"><img alt="Fallen Grace" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="fallen-grace.png"/></div></div></div>
+<div class="p-4"><h3 class="font-semibold text-base mb-2">Fallen Grace 🪽</h3>
+<p class="text-sm text-dark/60 mb-3" data-en="A couture interpretation of a fallen angel — where fragile beauty meets quiet strength. A soft beige and ash-crimson palette, a fluid draped silhouette, and distressed details veiled with muted grey pearls create an ethereal, melancholic elegance." data-id="Interpretasi couture dari sosok fallen angel — ketika keindahan yang rapuh bertemu kekuatan yang tenang. Palet beige lembut dan ash crimson, siluet drapery yang mengalir, serta detail sobekan yang dihiasi mutiara abu-abu menghadirkan kesan elegan, sendu, dan etereal.">A couture interpretation of a fallen angel — where fragile beauty meets quiet strength. A soft beige and ash-crimson palette, a fluid draped silhouette, and distressed details veiled with muted grey pearls create an ethereal, melancholic elegance.</p>
+<span class="text-xs bg-cream px-2 py-1 rounded text-cocoa">Ibis Paint</span><button class="mt-3 flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya13')"><span class="heart-btn text-lg" id="hati-karya13">🖤</span><span data-en="Like" data-id="Suka">Like</span><span class="font-semibold" id="jumlah-karya13">0</span></button></div></div>
+<!-- ==================== AKHIR KARYA 13 ==================== -->
+
 </div><!-- akhir grid galeri -->
 <p class="text-center mt-8 text-dark/50 text-sm" data-en="More artworks coming soon ✏️" data-id="Nantikan Updated Karyaku lainya ✏️">More artworks coming soon ✏️</p>
 </div>
@@ -731,59 +740,69 @@ document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') tutupZoom();
         });
     
-        // Flipbook: Nocturnal Lagoon — urutan karya pilihan.
-        const nocturnalWorks = [
-            { title: 'Black Butterfly', image: 'black-butterfly.png' },
-            { title: 'Starry Night', image: 'starry-night.png' },
-            { title: 'Midnight', image: 'midnight.png' },
-            { title: 'Day and Night', image: 'day-and-night.png' },
-            { title: 'Blossom', image: 'blossom.png' },
-            { title: 'Lagoon Dawn', image: 'lagoon-dawn.png' },
-            { title: 'Island Girl', image: 'island-girl.png' },
-            { title: 'Emerald Mermaid', image: 'emerald-mermaid.png' }
-        ];
+        // Flipbook collections with an individual description for every artwork.
+        const collections = {
+          nocturnal: { title: 'Nocturnal Lagoon', works: [
+            {title:'Black Butterfly',image:'black-butterfly.png',description:'A study of quiet elegance and mystery, inspired by the deep tones and delicate patterns of black butterfly wings.'},
+            {title:'Starry Night',image:'starry-night.png',description:'A night-sky inspired fashion story, translating celestial beauty into an expressive visual mood.'},
+            {title:'Midnight',image:'midnight.png',description:'The stillness of midnight meets the reflective surface of a lagoon, creating a dark and tranquil atmosphere.'},
+            {title:'Day and Night',image:'day-and-night.png',description:'A visual contrast between brightness and shadow, exploring the graceful transition from day into night.'},
+            {title:'Blossom',image:'blossom.png',description:'Delicate floral beauty emerges in a moonlit lagoon, surrounded by the softness of dew and nature.'},
+            {title:'Lagoon Dawn',image:'lagoon-dawn.png',description:'The first light of dawn touches a quiet lagoon, expressed through gentle sunrise hues and delicate pearl accents.'},
+            {title:'Island Girl',image:'island-girl.png',description:'An island-inspired look celebrating warm earthy tones, natural charm, and a relaxed sense of tropical beauty.'},
+            {title:'Emerald Mermaid',image:'emerald-mermaid.png',description:'A deep-sea fantasy expressed through emerald tones and shimmering details, inspired by the mystery of a midnight lagoon.'}
+          ]},
+          fantasy: { title: 'Fantasy Beings', works: [
+            {title:'Velvet Pixie',image:'velvet-pixie.png',description:'Inspired by a butterfly fairy. Purple, magenta, burgundy, and black frame an asymmetrical corset, wing-vein motifs, and sheer net textures.'},
+            {title:'Verdant Nymph',image:'verdant-nymph.png',description:'A graceful Nature Nymph brought to life through emerald tones, floral elements, and intricate embellishments inspired by the natural world.'},
+            {title:'Abyssal Starlight',image:'abyssal-starlight.png',description:'A fashion fantasy inspired by the deepest ocean, where the mystery of the sea meets the quiet radiance of distant starlight.'},
+            {title:'Fallen Grace',image:'fallen-grace.png',description:'A fallen angel reimagined in couture: soft beige, ash crimson, flowing drapery, distressed details, and muted grey pearls.'}
+          ]}
+        };
+        let activeCollection = 'nocturnal';
+        let activeWorks = collections[activeCollection].works;
         let nocturnalIndex = 0;
         let flipBusy = false;
         let touchStartX = null;
 
         function renderCollectionPage() {
-            const work = nocturnalWorks[nocturnalIndex];
-            document.getElementById('flipbookImage').src = work.image;
-            document.getElementById('flipbookImage').alt = work.title;
-            document.getElementById('flipbookTitle').textContent = work.title;
-            document.getElementById('flipbookCount').textContent = String(nocturnalIndex + 1).padStart(2, '0') + ' / ' + String(nocturnalWorks.length).padStart(2, '0');
-            document.getElementById('flipPrev').disabled = nocturnalIndex === 0;
-            document.getElementById('flipNext').disabled = nocturnalIndex === nocturnalWorks.length - 1;
+          const work = activeWorks[nocturnalIndex];
+          document.getElementById('flipbookCollectionTitle').textContent = collections[activeCollection].title;
+          document.getElementById('flipbookImage').src = work.image;
+          document.getElementById('flipbookImage').alt = work.title;
+          document.getElementById('flipbookTitle').textContent = work.title;
+          document.getElementById('flipbookDescription').textContent = work.description;
+          document.getElementById('flipbookCount').textContent = String(nocturnalIndex+1).padStart(2,'0')+' / '+String(activeWorks.length).padStart(2,'0');
+          document.getElementById('flipPrev').disabled = nocturnalIndex === 0;
+          document.getElementById('flipNext').disabled = nocturnalIndex === activeWorks.length-1;
         }
-
-        function bukaCollection() {
-            const overlay = document.getElementById('flipbookOverlay');
-            nocturnalIndex = 0;
-            renderCollectionPage();
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        function bukaCollection(which) {
+          activeCollection = collections[which] ? which : 'nocturnal';
+          activeWorks = collections[activeCollection].works;
+          nocturnalIndex = 0;
+          renderCollectionPage();
+          document.getElementById('flipbookOverlay').classList.add('active');
+          document.body.style.overflow = 'hidden';
         }
-
         function tutupCollection() {
-            const overlay = document.getElementById('flipbookOverlay');
-            if (!overlay) return;
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+          const overlay = document.getElementById('flipbookOverlay');
+          if (!overlay) return;
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
         }
-
         function halamanCollection(direction) {
-            if (flipBusy) return;
-            const nextIndex = nocturnalIndex + direction;
-            if (nextIndex < 0 || nextIndex >= nocturnalWorks.length) return;
-            const page = document.getElementById('flipbookPage');
-            flipBusy = true;
-            page.classList.add(direction > 0 ? 'turn-next' : 'turn-prev');
-            window.setTimeout(function () {
-                nocturnalIndex = nextIndex;
-                renderCollectionPage();
-                page.classList.remove('turn-next', 'turn-prev');
-                flipBusy = false;
-            }, 520);
+          if (flipBusy) return;
+          const nextIndex = nocturnalIndex + direction;
+          if (nextIndex < 0 || nextIndex >= activeWorks.length) return;
+          const page = document.getElementById('flipbookPage');
+          flipBusy = true;
+          page.classList.add(direction > 0 ? 'turn-next' : 'turn-prev');
+          window.setTimeout(function() {
+            nocturnalIndex = nextIndex;
+            renderCollectionPage();
+            page.classList.remove('turn-next','turn-prev');
+            flipBusy = false;
+          },520);
         }
 
         // Elemen flipbook berada setelah script, jadi pasang swipe setelah DOM selesai dibuat.
@@ -813,7 +832,7 @@ document.addEventListener('keydown', function(e) {
 <div class="flipbook-shell">
 <div class="flipbook-top">
 <div>
-<p class="font-display text-lg">Nocturnal Lagoon</p>
+<p class="font-display text-lg" id="flipbookCollectionTitle">Nocturnal Lagoon</p>
 <p class="text-[10px] tracking-[0.2em] uppercase text-white/55">De'tails Attelier · Collection 01</p>
 </div>
 <button aria-label="Close flipbook" class="flipbook-close" data-id-aria-label="Tutup flipbook" onclick="tutupCollection()" type="button">Close <i class="fa fa-times ml-1"></i></button>
@@ -823,7 +842,7 @@ document.addEventListener('keydown', function(e) {
 <img alt="Black Butterfly" class="flipbook-art" draggable="false" id="flipbookImage" src="black-butterfly.png"/>
 <div class="flipbook-caption">
 <p class="font-display text-2xl" id="flipbookTitle">Black Butterfly</p>
-<p class="text-[10px] tracking-[0.25em] uppercase text-white/75 mt-1" id="flipbookCount">01 / 08</p>
+<p class="text-[10px] tracking-[0.25em] uppercase text-white/75 mt-1" id="flipbookCount">01 / 08</p><p class="flipbook-description" id="flipbookDescription">A story behind this artwork.</p>
 </div>
 </div>
 </div>
