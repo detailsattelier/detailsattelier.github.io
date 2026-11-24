@@ -318,6 +318,18 @@ document.addEventListener('keydown', function(e) {
 <div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Fantasy Beings</h3><p class="text-xs text-dark/50 mt-1">4 fantasy-inspired illustrations</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
+<div class="collection-card">
+<button aria-label="Open the Lepidoptera flipbook" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaCollection('lepidoptera')" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-gradient-to-br from-[#321A17] via-[#74301F] to-[#C96A3E] text-[#F9F1E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-[#E5C49A]/60 pointer-events-none"></div><div class="absolute inset-5 border border-white/15 pointer-events-none"></div>
+<div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-[#F2D3AC]/25"></div><div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#F2D3AC]/25"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-[#F2D3AC]">De'tails Attelier presents</p></div>
+<div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Lepidoptera</p><div class="w-12 h-px bg-[#F2D3AC] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase text-white/80">An elegant butterfly couture collection</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#F2D3AC]">VOL. 03 · 1 ARTWORK</p></div>
+</div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">1 butterfly-inspired couture design</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
+</button>
+</div>
 </div>
 </section>
 <section class="py-16 px-4 sm:px-6 lg:px-8" id="karya">
@@ -757,6 +769,9 @@ document.addEventListener('keydown', function(e) {
             {title:'Verdant Nymph',image:'verdant-nymph.png',description:'A graceful Nature Nymph brought to life through emerald tones, floral elements, and intricate embellishments inspired by the natural world.'},
             {title:'Abyssal Starlight',image:'abyssal-starlight.png',description:'A fashion fantasy inspired by the deepest ocean, where the mystery of the sea meets the quiet radiance of distant starlight.'},
             {title:'Fallen Grace',image:'fallen-grace.png',description:'A fallen angel reimagined in couture: soft beige, ash crimson, flowing drapery, distressed details, and muted grey pearls.'}
+          ]}
+          ,lepidoptera: { title: 'Lepidoptera', works: [
+            {title:'Monarch — Golden Embrace',image:'monarch-golden-embrace.png',description:'Inspired by the Monarch butterfly, this couture design translates intricate wing patterns into an elegant asymmetrical silhouette. Flowing copper-orange panels, delicate vein-like lines, and subtle pearl embellishments express natural beauty through refined craftsmanship.'}
           ]}
         };
         let activeCollection = 'nocturnal';
