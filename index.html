@@ -233,9 +233,7 @@ document.addEventListener('keydown', function(e) {
 <div class="hidden md:flex gap-6 text-sm tracking-wide">
 <a class="hover:text-cocoa transition-colors" data-en="Home" data-id="Beranda" href="#beranda">Home</a>
 <a class="hover:text-cocoa transition-colors" data-en="About" data-id="Tentang" href="#tentang">About</a>
-<a class="hover:text-cocoa transition-colors" data-en="Artwork" data-id="Karya" href="#karya">Artwork</a>
-<a class="hover:text-cocoa transition-colors" href="#collections">Collection</a>
-<a class="hover:text-cocoa transition-colors" data-en="Services" data-id="Layanan" href="#services">Services</a>
+<a class="hover:text-cocoa transition-colors" data-en="Catalog" data-id="Katalog" href="#catalog">Catalog</a>
 <a class="hover:text-cocoa transition-colors" data-en="Services" data-id="Layanan" href="#services">Services</a>
 <a class="hover:text-cocoa transition-colors" data-en="Creative Notes" data-id="Catatan Ide" href="#ide">Creative Notes</a>
 <a class="hover:text-cocoa transition-colors" data-en="Connect" data-id="Hubungi" href="#hubungi">Connect</a>
@@ -244,8 +242,7 @@ document.addEventListener('keydown', function(e) {
 <div class="hidden md:hidden flex-col gap-4 px-6 pb-5 text-sm bg-cream" id="mobileMenu">
 <a class="hover:text-cocoa transition-colors" data-en="Home" data-id="Beranda" href="#beranda">Home</a>
 <a class="hover:text-cocoa transition-colors" data-en="About" data-id="Tentang" href="#tentang">About</a>
-<a class="hover:text-cocoa transition-colors" data-en="Artwork" data-id="Karya" href="#karya">Artwork</a>
-<a class="hover:text-cocoa transition-colors" href="#collections">Collection</a>
+<a class="hover:text-cocoa transition-colors" data-en="Catalog" data-id="Katalog" href="#catalog">Catalog</a>
 <a class="hover:text-cocoa transition-colors" data-en="Creative Notes" data-id="Catatan Ide" href="#ide">Creative Notes</a>
 <a class="hover:text-cocoa transition-colors" data-en="Connect" data-id="Hubungi" href="#hubungi">Connect</a>
 </div>
@@ -266,7 +263,7 @@ document.addEventListener('keydown', function(e) {
 <div class="max-w-3xl">
 <h1 class="font-display text-[clamp(2rem,5vw,3.5rem)] leading-tight font-semibold mb-5" data-en-html='Every detail&lt;br&gt;&lt;span class="text-cocoa"&gt;tells a story&lt;/span&gt;' data-id-html='Setiap detail&lt;br&gt;&lt;span class="text-cocoa"&gt;menceritakan kisah&lt;/span&gt;'>Every detail<br/><span class="text-cocoa">tells a story</span></h1>
 <p class="text-base mb-6 mx-auto max-w-lg leading-relaxed" data-en="Welcome to De'tails Attelier — where ideas come to life through heartfelt strokes in Ibis Paint." data-id="Selamat datang di De'tails Attelier — tempat ide lahir dari goresan tulus di Ibis Paint.">Welcome to De'tails Attelier — where ideas come to life through heartfelt strokes in Ibis Paint.</p>
-<a class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg" href="#karya">
+<a class="inline-block bg-cocoa text-white px-7 py-2.5 rounded-full hover:bg-accent transition-colors shadow-lg" href="#catalog">
                 <span data-en="Explore My Artworks" data-id="Lihat Karya Saya">Explore My Artworks</span> <i class="fa fa-arrow-right ml-2 text-sm"></i>
 </a>
 </div>
@@ -285,12 +282,12 @@ document.addEventListener('keydown', function(e) {
 <p class="text-base italic text-cocoa" data-en="“Every detail tells a story.”" data-id="“Setiap detail menceritakan kisah.”">“Every detail tells a story.”</p>
 </div>
 </section>
-<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#F1E9DF]" id="collections">
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-[#F1E9DF]" id="catalog">
 <div class="max-w-6xl mx-auto">
 <div class="text-center mb-10">
 <p class="text-xs tracking-[0.35em] uppercase text-cocoa mb-3" data-en="Curated works · De'tails Attelier" data-id="Curated works · De'tails Attelier">Curated works · De'tails Attelier</p>
-<h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3">My Collections</h2>
-<p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="A curated selection of artworks, brought together to tell a visual story." data-id="Kumpulan karya pilihan yang disusun menjadi sebuah cerita visual.">A curated selection of artworks, brought together to tell a visual story.</p>
+<h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3">Creative Catalog</h2>
+<p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="Explore the collections and individual fashion illustrations by De'tails Attelier." data-id="Jelajahi koleksi dan ilustrasi fashion individual dari De'tails Attelier.">Explore the collections and individual fashion illustrations by De'tails Attelier.</p>
 <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
 </div>
 <div class="collection-shelf" aria-label="Swipe to explore collections">
@@ -331,11 +328,10 @@ document.addEventListener('keydown', function(e) {
 </button>
 </div>
 </div>
-</section>
-<section class="py-16 px-4 sm:px-6 lg:px-8" id="karya">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-10">
-<h2 class="font-display text-2xl font-semibold mb-3" data-en="Artworks &amp; Sketches" data-id="Karya &amp; Sketsa">Artworks &amp; Sketches</h2>
+<div class="max-w-7xl mx-auto pt-12">
+<div class="text-center mb-8">
+<p class="text-xs tracking-[0.3em] uppercase text-cocoa mb-2">Individual Artworks</p>
+<h2 class="font-display text-2xl font-semibold mb-3" data-en="Artwork Gallery" data-id="Galeri Karya">Artwork Gallery</h2>
 <p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="Click an image to enlarge • Click ♡ to like ✨" data-id="Klik gambar untuk memperbesar • Klik ♡ untuk menyukai ✨">Click an image to enlarge • Click ♡ to like ✨</p>
 <div class="w-16 h-0.5 bg-accent mx-auto mt-3"></div>
 </div>
@@ -619,6 +615,7 @@ document.addEventListener('keydown', function(e) {
 
 </div><!-- akhir grid galeri -->
 <p class="text-center mt-8 text-dark/50 text-sm" data-en="More artworks coming soon ✏️" data-id="Nantikan Updated Karyaku lainya ✏️">More artworks coming soon ✏️</p>
+</div>
 </div>
 </section>
 
