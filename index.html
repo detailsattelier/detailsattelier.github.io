@@ -287,7 +287,7 @@ document.addEventListener('keydown', function(e) {
   <div class="text-center mb-9">
    <p class="text-xs tracking-[0.35em] uppercase text-cocoa mb-3">De'tails Attelier · Portfolio</p>
    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3">The Artworks Catalog</h2>
-   <p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="All fashion illustrations in one place, thoughtfully arranged by collection." data-id="Seluruh ilustrasi fashion dalam satu katalog, ditata berdasarkan koleksinya.">All fashion illustrations in one place, thoughtfully arranged by collection.</p>
+   <p class="text-dark/60 max-w-xl mx-auto text-sm" data-en="Explore individual collection books or open the complete catalog to view every artwork together." data-id="Jelajahi flipbook setiap koleksi atau buka katalog lengkap untuk melihat seluruh karya sekaligus.">All fashion illustrations in one place, thoughtfully arranged by collection.</p>
    <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
   </div>
   <div class="text-center mb-7">
@@ -332,21 +332,28 @@ document.addEventListener('keydown', function(e) {
 <div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">1 butterfly-inspired couture design</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
+<div class="collection-card">
+<button aria-label="Open the complete artworks catalog" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="toggleCompleteCatalog()" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-gradient-to-br from-[#E6D7C4] via-[#C7AD91] to-[#8B7355] text-[#38291F] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-[#5B4432]/50 pointer-events-none"></div><div class="absolute inset-5 border border-white/50 pointer-events-none"></div>
+<div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-white/35 pointer-events-none"></div><div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#5B4432]/20 pointer-events-none"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase">De'tails Attelier · Portfolio</p></div>
+<div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">The Artworks<br/>Catalog</p><div class="w-12 h-px bg-[#5B4432] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase">A complete collection of works</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em]">ALL · 14 ARTWORKS</p></div>
 </div>
-  <div class="text-center mt-12 mb-7">
-   <p class="text-xs tracking-[0.3em] uppercase text-cocoa mb-2">Individual Artworks</p>
-   <h3 class="font-display text-2xl font-semibold">The Artworks Catalog</h3>
-   <p class="text-dark/55 text-sm mt-2">Browse all illustrations together, or filter them by collection.</p>
-   <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
-  </div>
-  <div class="flex flex-wrap justify-center gap-2 mb-5" aria-label="Filter artworks">
-   <button class="catalog-filter active-filter" onclick="filterCatalog('all',this)">All Artworks</button>
-   <button class="catalog-filter" onclick="filterCatalog('nocturnal-lagoon',this)">Nocturnal Lagoon</button>
-   <button class="catalog-filter" onclick="filterCatalog('fantasy-beings',this)">Fantasy Beings</button>
-   <button class="catalog-filter" onclick="filterCatalog('lepidoptera',this)">Lepidoptera</button>
-   <button class="catalog-filter" onclick="filterCatalog('signature-works',this)">Signature Works</button>
-  </div>
-  <p id="catalogCount" class="text-center text-xs text-dark/45 mb-5">14 artworks</p>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">The Artworks Catalog</h3><p class="text-xs text-dark/50 mt-1">All illustrations in one place</p></div><span class="text-cocoa text-sm">Open catalog <i class="fa fa-arrow-right ml-1"></i></span></div>
+</button>
+</div>
+</div>
+  <div id="completeCatalogPanel" class="hidden mt-12 scroll-mt-24">
+   <div class="text-center mb-7">
+    <p class="text-xs tracking-[0.3em] uppercase text-cocoa mb-2">De'tails Attelier · Complete Collection</p>
+    <h3 class="font-display text-2xl font-semibold">The Artworks Catalog</h3>
+    <p class="text-dark/55 text-sm mt-2">All artworks gathered in one place.</p>
+    <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
+    <p id="catalogCount" class="text-center text-xs text-dark/45 mt-4">14 artworks</p>
+    <button type="button" onclick="toggleCompleteCatalog()" class="mt-4 text-xs text-cocoa underline underline-offset-4">Close catalog</button>
+   </div>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="catalogGrid">
    <article class="catalog-card bg-white rounded-xl overflow-hidden shadow-md card-hover" data-category="nocturnal-lagoon">
   <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center">
@@ -619,6 +626,16 @@ document.addEventListener('keydown', function(e) {
                     }
                 });
             });
+        }
+
+        function toggleCompleteCatalog() {
+          const panel = document.getElementById('completeCatalogPanel');
+          if (!panel) return;
+          const opening = panel.classList.contains('hidden');
+          panel.classList.toggle('hidden', !opening);
+          if (opening) {
+            setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+          }
         }
 
         function filterCatalog(category, button) {
