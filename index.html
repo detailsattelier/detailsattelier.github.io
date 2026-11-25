@@ -207,6 +207,13 @@ document.addEventListener('keydown', function(e) {
         .collection-shelf{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.25rem .25rem 1.25rem;scrollbar-width:thin;scrollbar-color:#C89F73 #E8DED2;-webkit-overflow-scrolling:touch}
         .collection-shelf>.collection-card{flex:0 0 min(82vw,320px);scroll-snap-align:center}
         .flipbook-description{font-size:11px;line-height:1.5;max-width:34rem;margin:7px auto 0;color:rgba(255,255,255,.9)}
+        .concept-overlay{display:none;position:fixed;inset:0;z-index:10001;background:rgba(24,20,18,.82);align-items:center;justify-content:center;padding:18px;}
+        .concept-overlay.active{display:flex;}
+        .concept-panel{width:min(100%,620px);max-height:88vh;overflow:auto;background:#F9F5F0;color:#2C231B;border:1px solid rgba(200,159,115,.55);box-shadow:0 24px 70px rgba(0,0,0,.35);padding:clamp(24px,5vw,42px);position:relative;}
+        .concept-close{position:absolute;top:14px;right:16px;color:#8B7355;font-size:20px;line-height:1;}
+        .concept-kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#8B7355;}
+        .concept-rule{width:48px;height:1px;background:#C89F73;margin:18px auto;}
+        .concept-status{display:inline-block;border:1px solid rgba(139,115,85,.35);border-radius:999px;padding:6px 11px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8B7355;}
         @media(min-width:768px){.collection-shelf{justify-content:center}.collection-shelf>.collection-card{flex-basis:300px}}
 
         @media(max-width:520px){.flipbook-overlay{padding:12px}.flipbook-page{width:86vw;height:62vh;min-height:300px}.flipbook-stage{min-height:62vh}.flipbook-top{font-size:12px}}
@@ -293,7 +300,7 @@ document.addEventListener('keydown', function(e) {
   <div class="text-center mb-7">
    <p class="text-xs tracking-[0.3em] uppercase text-cocoa mb-2">Curated Collections</p>
    <h3 class="font-display text-2xl font-semibold">Explore the Collections</h3>
-   <p class="text-dark/55 text-sm mt-2">Choose a collection cover to open its flipbook.</p>
+   <p class="text-dark/55 text-sm mt-2">Open a collection to explore its artworks or concept.</p>
   </div>
 <div class="collection-shelf" aria-label="Swipe to explore collections">
 <div class="collection-card">
@@ -330,6 +337,42 @@ document.addEventListener('keydown', function(e) {
 <div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#F2D3AC]">VOL. 03 · 1 ARTWORK</p></div>
 </div>
 <div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">1 butterfly-inspired couture design</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
+</button>
+</div>
+<div class="collection-card">
+<button aria-label="Explore the Zodiac collection concept" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaConcept('zodiac')" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-gradient-to-br from-[#171B32] via-[#34365A] to-[#111322] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-[#D7C69A]/55 pointer-events-none"></div><div class="absolute inset-5 border border-white/10 pointer-events-none"></div>
+<div class="absolute -top-14 -right-14 w-56 h-56 rounded-full border border-[#D7C69A]/25"></div><div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full border border-[#D7C69A]/20"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-[#D7C69A]">De'tails Attelier presents</p></div>
+<div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Zodiac</p><div class="w-12 h-px bg-[#D7C69A] mx-auto my-5"></div><p class="text-[9px] tracking-[0.25em] uppercase text-white/75">Twelve celestial identities</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#D7C69A]">CONCEPT · IN DEVELOPMENT</p></div>
+</div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Zodiac</h3><p class="text-xs text-dark/50 mt-1">Celestial archetypes & symbolism</p></div><span class="text-cocoa text-sm">Explore concept <i class="fa fa-arrow-right ml-1"></i></span></div>
+</button>
+</div>
+<div class="collection-card">
+<button aria-label="Explore the Monochrome collection concept" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaConcept('monochrome')" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-gradient-to-br from-[#111111] via-[#55514D] to-[#D8D2C9] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-white/45 pointer-events-none"></div><div class="absolute inset-5 border border-white/15 pointer-events-none"></div>
+<div class="absolute -top-14 -right-14 w-56 h-56 rounded-full border border-white/20"></div><div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full border border-white/20"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-white/75">De'tails Attelier presents</p></div>
+<div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Mono<br/>chrome</p><div class="w-12 h-px bg-white/70 mx-auto my-5"></div><p class="text-[9px] tracking-[0.25em] uppercase text-white/75">The art of tonal contrast</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-white/80">CONCEPT · IN DEVELOPMENT</p></div>
+</div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Monochrome</h3><p class="text-xs text-dark/50 mt-1">Texture, tone &amp; silhouette</p></div><span class="text-cocoa text-sm">Explore concept <i class="fa fa-arrow-right ml-1"></i></span></div>
+</button>
+</div>
+<div class="collection-card">
+<button aria-label="Explore the Elemental Sovereigns collection concept" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaConcept('elemental')" type="button">
+<div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-gradient-to-br from-[#30202B] via-[#765047] to-[#B58A62] text-[#FFF7EB] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
+<div class="absolute inset-3 border border-[#F0D5AE]/55 pointer-events-none"></div><div class="absolute inset-5 border border-white/15 pointer-events-none"></div>
+<div class="absolute -top-14 -right-14 w-56 h-56 rounded-full border border-[#F0D5AE]/25"></div><div class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full border border-[#F0D5AE]/20"></div>
+<div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-[#F0D5AE]">De'tails Attelier presents</p></div>
+<div class="relative text-center"><p class="font-display italic text-3xl sm:text-4xl leading-tight">Elemental<br/>Sovereigns</p><div class="w-12 h-px bg-[#F0D5AE] mx-auto my-5"></div><p class="text-[9px] tracking-[0.25em] uppercase text-white/80">Rulers of the elements</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#F0D5AE]">CONCEPT · IN DEVELOPMENT</p></div>
+</div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Elemental</h3><p class="text-xs text-dark/50 mt-1">Elemental Sovereigns</p></div><span class="text-cocoa text-sm">Explore concept <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
 <div class="collection-card">
@@ -670,6 +713,53 @@ document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') tutupZoom();
         });
     
+        // Concept previews for collections that are still being developed.
+        const conceptCollections = {
+          zodiac: {
+            title: 'Zodiac',
+            description: 'A fashion exploration of the twelve zodiac signs, translating their symbolism, personalities, and celestial identities into individual couture interpretations.',
+            descriptionId: 'Eksplorasi fashion dari dua belas zodiak, menerjemahkan simbol, kepribadian, dan identitas langit masing-masing menjadi interpretasi couture yang berbeda.',
+            points: ['Twelve distinct design identities inspired by the signs and their symbolism.', 'A considered palette, silhouette, motif, and embellishment language for each sign.', 'A balance of feminine, masculine, and experimental looks rather than one repeated garment type.'],
+            pointsId: ['Dua belas identitas desain yang terinspirasi dari karakter dan simbol setiap zodiak.', 'Palet warna, siluet, motif, dan ornamen yang dirancang sesuai karakter masing-masing tanda.', 'Perpaduan desain feminin, maskulin, dan eksperimental tanpa terpaku pada satu jenis busana.']
+          },
+          monochrome: {
+            title: 'Monochrome',
+            description: 'A study of fashion through tonal restraint. Each artwork explores the expressive possibilities of a limited colour family, allowing silhouette, texture, construction, and surface details to become the focus.',
+            descriptionId: 'Eksplorasi fashion melalui permainan warna yang terbatas. Setiap karya menggali kemungkinan visual dari satu keluarga warna agar siluet, tekstur, konstruksi, dan detail permukaan menjadi pusat perhatian.',
+            points: ['Explore black, white, and grey as well as individual single-hue colour stories.', 'Build depth through fabric texture, layering, transparency, shine, and matte surfaces.', 'Let each design stand out through shape and material rather than relying on many colours.'],
+            pointsId: ['Jelajahi hitam, putih, abu-abu, serta cerita warna dari satu keluarga hue.', 'Bangun kedalaman melalui tekstur kain, layering, transparansi, kilau, dan permukaan matte.', 'Tonjolkan desain melalui bentuk dan material, bukan ketergantungan pada banyak warna.']
+          },
+          elemental: {
+            title: 'Elemental Sovereigns',
+            description: 'An imagined realm ruled by sovereigns whose power comes from elemental forces. Each ruler has a distinct identity, temperament, and couture language shaped by the element they command.',
+            descriptionId: 'Sebuah dunia imajinatif yang dipimpin para penguasa dengan kekuatan dari berbagai elemen. Setiap penguasa memiliki identitas, karakter, dan bahasa couture yang dibentuk oleh elemen yang mereka kendalikan.',
+            points: ['Begin with the Primordial Four: Fire, Water, Earth, and Air; expand later into forces such as Ice, Lightning, Light, Darkness, Nature, and Crystal.', 'Mix gowns, tailored suits, jumpsuits, long coats, and avant-garde forms across feminine, masculine, and androgynous interpretations.', 'Translate each element into garment construction, silhouette, texture, and ornament—not colour alone.'],
+            pointsId: ['Mulai dari empat elemen utama: Fire, Water, Earth, dan Air; lalu kembangkan ke Ice, Lightning, Light, Darkness, Nature, dan Crystal.', 'Padukan gown, tailored suit, jumpsuit, long coat, dan bentuk avant-garde dengan interpretasi feminin, maskulin, maupun androgini.', 'Terjemahkan setiap elemen melalui konstruksi busana, siluet, tekstur, dan ornamen—bukan hanya warna.']
+          }
+        };
+        function bukaConcept(which) {
+          const concept = conceptCollections[which];
+          if (!concept) return;
+          document.getElementById('conceptTitle').textContent = concept.title;
+          const language = document.documentElement.lang === 'id' ? 'id' : 'en';
+          document.getElementById('conceptDescription').textContent = language === 'id' ? concept.descriptionId : concept.description;
+          const list = document.getElementById('conceptPoints');
+          list.innerHTML = '';
+          (language === 'id' ? concept.pointsId : concept.points).forEach(function(point) {
+            const item = document.createElement('li');
+            item.textContent = point;
+            list.appendChild(item);
+          });
+          document.getElementById('conceptOverlay').classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+        function tutupConcept() {
+          const overlay = document.getElementById('conceptOverlay');
+          if (!overlay) return;
+          overlay.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
         // Flipbook collections with an individual description for every artwork.
         const collections = {
           nocturnal: { title: 'Nocturnal Lagoon', works: [
@@ -753,6 +843,7 @@ document.addEventListener('keydown', function(e) {
             }, {passive:true});
         });
         document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') tutupConcept();
             const overlay = document.getElementById('flipbookOverlay');
             if (!overlay || !overlay.classList.contains('active')) return;
             if (e.key === 'ArrowRight') halamanCollection(1);
@@ -761,6 +852,21 @@ document.addEventListener('keydown', function(e) {
         });
 
     </script>
+<div aria-label="Collection concept" aria-modal="true" class="concept-overlay" id="conceptOverlay" onclick="if(event.target===this) tutupConcept()" role="dialog">
+  <section class="concept-panel">
+    <button aria-label="Close concept" class="concept-close" onclick="tutupConcept()" type="button"><i class="fa fa-times"></i></button>
+    <p class="concept-kicker" data-en="De'tails Attelier · Collection Concept" data-id="De'tails Attelier · Konsep Koleksi">De'tails Attelier · Collection Concept</p>
+    <h2 class="font-display text-3xl sm:text-4xl mt-4" id="conceptTitle">Zodiac</h2>
+    <div class="concept-rule"></div>
+    <p class="text-sm leading-relaxed text-dark/70" id="conceptDescription"></p>
+    <div class="mt-6">
+      <p class="text-xs uppercase tracking-[0.2em] text-cocoa mb-2" data-en="Creative direction" data-id="Arah kreatif">Creative direction</p>
+      <ul class="list-disc pl-5 space-y-2 text-sm leading-relaxed text-dark/75" id="conceptPoints"></ul>
+    </div>
+    <p class="concept-status mt-7" data-en="In development · Artwork previews coming later" data-id="Dalam pengembangan · Pratinjau karya menyusul">In development · Artwork previews coming later</p>
+  </section>
+</div>
+
 <div aria-label="Nocturnal Lagoon collection" aria-modal="true" class="flipbook-overlay" id="flipbookOverlay" onclick="if(event.target===this) tutupCollection()" role="dialog">
 <div class="flipbook-shell">
 <div class="flipbook-top">
