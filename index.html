@@ -186,17 +186,17 @@ document.addEventListener('keydown', function(e) {
         });
     </script>
 <style>
-        .flipbook-overlay{display:none;position:fixed;inset:0;z-index:10000;background:rgba(24,20,18,.94);align-items:center;justify-content:center;padding:18px;}
+        .flipbook-overlay{display:none;position:fixed;inset:0;z-index:10000;background:var(--flipbook-overlay-bg,linear-gradient(135deg,#211E1D 0%,#342821 48%,#17191B 100%));align-items:center;justify-content:center;padding:18px;transition:background .45s ease;}
         .flipbook-overlay.active{display:flex;}
         .flipbook-shell{width:min(100%,760px);color:#F9F5F0;}
         .flipbook-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;}
         .flipbook-stage{perspective:1800px;display:flex;justify-content:center;align-items:center;min-height: min(68vh,680px);}
-        .flipbook-page{position:relative;width:min(78vw,470px);height:min(68vh,620px);min-height:360px;background:#F9F5F0;color:#2C231B;box-shadow:0 24px 70px rgba(0,0,0,.45);transform-origin:left center;overflow:hidden;touch-action:pan-y;}
+        .flipbook-page{position:relative;width:min(78vw,470px);height:min(68vh,620px);min-height:360px;background:transparent;color:#2C231B;box-shadow:none;transform-origin:left center;overflow:hidden;touch-action:pan-y;}
         .flipbook-page.turn-next{animation:pageTurnNext .52s ease-in forwards;}
         .flipbook-page.turn-prev{transform-origin:right center;animation:pageTurnPrev .52s ease-in forwards;}
         @keyframes pageTurnNext{0%{transform:rotateY(0);filter:brightness(1)}50%{filter:brightness(.72)}100%{transform:rotateY(-82deg);filter:brightness(.6)}}
         @keyframes pageTurnPrev{0%{transform:rotateY(0);filter:brightness(1)}50%{filter:brightness(.72)}100%{transform:rotateY(82deg);filter:brightness(.6)}}
-        .flipbook-art{width:100%;height:100%;object-fit:contain;background:#F4EEE7;display:block;user-select:none;-webkit-user-drag:none;}
+        .flipbook-art{width:100%;height:100%;object-fit:contain;background:transparent;display:block;user-select:none;-webkit-user-drag:none;}
         .flipbook-caption{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 18px;background:linear-gradient(transparent,rgba(20,17,15,.82));color:#fff;text-align:center;}
         .flipbook-controls{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:16px;}
         .flipbook-btn{width:42px;height:42px;border:1px solid rgba(249,245,240,.55);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#F9F5F0;transition:background .2s,opacity .2s;}
@@ -808,9 +808,33 @@ document.addEventListener('keydown', function(e) {
           document.getElementById('flipPrev').disabled = nocturnalIndex === 0;
           document.getElementById('flipNext').disabled = nocturnalIndex === activeWorks.length-1;
         }
+        const collectionThemes = {
+          nocturnal: {
+            overlay: 'radial-gradient(ellipse at 18% 18%, rgba(67,91,100,.72) 0%, transparent 48%), radial-gradient(ellipse at 85% 82%, rgba(91,67,79,.58) 0%, transparent 46%), linear-gradient(135deg,#101B20 0%,#26343A 48%,#211B20 100%)',
+            page: '#EAE4DF'
+          },
+          fantasy: {
+            overlay: 'radial-gradient(ellipse at 18% 18%, rgba(111,139,91,.52) 0%, transparent 48%), radial-gradient(ellipse at 85% 82%, rgba(39,86,66,.6) 0%, transparent 46%), linear-gradient(135deg,#101D18 0%,#263D35 52%,#17251F 100%)',
+            page: 'transparent'
+          },
+          lepidoptera: {
+            overlay: 'radial-gradient(ellipse at 18% 18%, rgba(213,139,91,.48) 0%, transparent 48%), radial-gradient(ellipse at 85% 82%, rgba(119,48,31,.62) 0%, transparent 46%), linear-gradient(135deg,#321A17 0%,#74301F 52%,#A84F30 100%)',
+            page: 'transparent'
+          }
+        };
+        function terapkanTemaFlipbook(which) {
+          const overlay = document.getElementById('flipbookOverlay');
+          const theme = collectionThemes[which] || {
+            overlay: 'radial-gradient(ellipse at 20% 15%, rgba(200,159,115,.38) 0%, transparent 48%), linear-gradient(135deg,#2C231B 0%,#554334 55%,#211E1D 100%)',
+            page: 'transparent'
+          };
+          overlay.style.setProperty('--flipbook-overlay-bg', theme.overlay);
+          overlay.style.setProperty('--flipbook-page-bg', 'transparent');
+        }
         function bukaCollection(which) {
           activeCollection = collections[which] ? which : 'nocturnal';
           activeWorks = collections[activeCollection].works;
+          terapkanTemaFlipbook(activeCollection);
           nocturnalIndex = 0;
           renderCollectionPage();
           document.getElementById('flipbookOverlay').classList.add('active');
