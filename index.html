@@ -204,8 +204,15 @@ document.addEventListener('keydown', function(e) {
         .flipbook-btn:disabled{opacity:.3;cursor:not-allowed}
         .flipbook-close{color:#F9F5F0;border:1px solid rgba(249,245,240,.45);padding:8px 13px;border-radius:999px;font-size:12px;}
 
-        .collection-shelf{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:.25rem .25rem 1.25rem;scrollbar-width:thin;scrollbar-color:#C89F73 #E8DED2;-webkit-overflow-scrolling:touch}
-        .collection-shelf>.collection-card{flex:0 0 min(82vw,320px);scroll-snap-align:center}
+        /* Responsive collection catalog: all cards stay inside the page, with no horizontal scrolling. */
+        .collection-shelf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.15rem;padding:.25rem 0 1.25rem;width:100%;max-width:900px;margin-left:auto;margin-right:auto;}
+        .collection-shelf>.collection-card{min-width:0;width:100%;}
+        .collection-card button{display:block;width:100%;}
+        .collection-card button>div:first-child{padding:clamp(12px,2.2vw,32px)!important;}
+        .collection-card button>div:first-child .font-display{font-size:clamp(1.25rem,3.2vw,2.8rem);overflow-wrap:anywhere;}
+        .collection-card button>div:first-child p{overflow-wrap:anywhere;}
+        .collection-card button>div:first-child .tracking-\[0\.4em\]{letter-spacing:.18em;}
+        .collection-card button>div:first-child .tracking-\[0\.3em\]{letter-spacing:.14em;}
         .flipbook-description{font-size:11px;line-height:1.5;max-width:34rem;margin:7px auto 0;color:rgba(255,255,255,.9)}
         .concept-overlay{display:none;position:fixed;inset:0;z-index:10001;background:rgba(24,20,18,.82);align-items:center;justify-content:center;padding:18px;}
         .concept-overlay.active{display:flex;}
@@ -214,7 +221,9 @@ document.addEventListener('keydown', function(e) {
         .concept-kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#8B7355;}
         .concept-rule{width:48px;height:1px;background:#C89F73;margin:18px auto;}
         .concept-status{display:inline-block;border:1px solid rgba(139,115,85,.35);border-radius:999px;padding:6px 11px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#8B7355;}
-        @media(min-width:768px){.collection-shelf{justify-content:center}.collection-shelf>.collection-card{flex-basis:300px}}
+        @media(min-width:640px){.collection-shelf{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}}
+        @media(min-width:1024px){.collection-shelf{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.75rem}}
+        @media(max-width:360px){.collection-shelf{gap:.75rem}.collection-card button>div:first-child .font-display{font-size:1.15rem}.collection-card button>div:first-child{padding:10px!important}}
 
         @media(max-width:520px){.flipbook-overlay{padding:12px}.flipbook-page{width:86vw;height:62vh;min-height:300px}.flipbook-stage{min-height:62vh}.flipbook-top{font-size:12px}}
         @media(prefers-reduced-motion:reduce){.flipbook-page.turn-next,.flipbook-page.turn-prev{animation-duration:.01ms}}
@@ -302,7 +311,7 @@ document.addEventListener('keydown', function(e) {
    <h3 class="font-display text-2xl font-semibold">Explore the Collections</h3>
    <p class="text-dark/55 text-sm mt-2">Open a collection to explore its artworks or concept.</p>
   </div>
-<div class="collection-shelf" aria-label="Swipe to explore collections">
+<div class="collection-shelf" aria-label="Browse all collections">
 <div class="collection-card">
 <button aria-label="Open the Nocturnal Lagoon flipbook" class="group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-cocoa rounded-sm" onclick="bukaCollection('nocturnal')" type="button">
 <div class="relative overflow-hidden aspect-[4/5] rounded-sm shadow-2xl bg-[#211E1D] text-[#F7F0E6] flex flex-col items-center justify-between p-8 sm:p-10 transition duration-500 group-hover:-translate-y-2">
@@ -324,7 +333,7 @@ document.addEventListener('keydown', function(e) {
 <div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Fantasy<br/>Beings</p><div class="w-12 h-px bg-[#B8C7A2] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase text-white/70">A world of mythical fashion</p></div>
 <div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#C5D0B5]">VOL. 02 · 4 ARTWORKS</p></div>
 </div>
-<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Fantasy Beings</h3><p class="text-xs text-dark/50 mt-1">4 fantasy-inspired illustrations</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Fantasy Beings</h3><p class="text-xs text-dark/50 mt-1">4 fantasy-inspired illustrations</p></div><span class="text-cocoa text-sm">Open collection <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
 <div class="collection-card">
@@ -336,7 +345,7 @@ document.addEventListener('keydown', function(e) {
 <div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Lepidoptera</p><div class="w-12 h-px bg-[#F2D3AC] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase text-white/80">An elegant butterfly couture collection</p></div>
 <div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#F2D3AC]">VOL. 03 · 1 ARTWORK</p></div>
 </div>
-<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">1 butterfly-inspired couture design</p></div><span class="text-cocoa text-sm">Swipe &amp; explore <i class="fa fa-arrow-right ml-1"></i></span></div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">1 butterfly-inspired couture design</p></div><span class="text-cocoa text-sm">Open collection <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
 <div class="collection-card">
