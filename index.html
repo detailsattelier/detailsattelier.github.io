@@ -174,7 +174,7 @@ document.addEventListener('keydown', function(e) {
         }
         
         document.addEventListener('DOMContentLoaded', function() {
-            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10', 'karya11', 'karya12', 'karya13', 'karya14'].forEach(function(id) {
+            ['karya1', 'karya2', 'karya3', 'karya4', 'karya5', 'karya6', 'karya7', 'karya8', 'karya9', 'karya10', 'karya11', 'karya12', 'karya13', 'karya14', 'karya15'].forEach(function(id) {
                 const elJumlah = document.getElementById('jumlah-' + id);
                 const elHati = document.getElementById('hati-' + id);
                 if (elJumlah) elJumlah.textContent = getLikes(id);
@@ -343,9 +343,9 @@ document.addEventListener('keydown', function(e) {
 <div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-[#F2D3AC]/25"></div><div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#F2D3AC]/25"></div>
 <div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase text-[#F2D3AC]">De'tails Attelier presents</p></div>
 <div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">Lepidoptera</p><div class="w-12 h-px bg-[#F2D3AC] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase text-white/80">An elegant butterfly couture collection</p></div>
-<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#F2D3AC]">VOL. 03 · 1 ARTWORK</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em] text-[#F2D3AC]">VOL. 03 · 2 ARTWORKS</p></div>
 </div>
-<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">1 butterfly-inspired couture design</p></div><span class="text-cocoa text-sm">Open collection <i class="fa fa-arrow-right ml-1"></i></span></div>
+<div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">Lepidoptera</h3><p class="text-xs text-dark/50 mt-1">2 butterfly-inspired couture designs</p></div><span class="text-cocoa text-sm">Open collection <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
 </div>
 <div class="collection-card">
@@ -391,7 +391,7 @@ document.addEventListener('keydown', function(e) {
 <div class="absolute -top-16 -right-14 w-56 h-56 rounded-full border border-white/35 pointer-events-none"></div><div class="absolute -bottom-20 -left-16 w-64 h-64 rounded-full border border-[#5B4432]/20 pointer-events-none"></div>
 <div class="relative text-center mt-5"><p class="text-[9px] tracking-[0.4em] uppercase">De'tails Attelier · Portfolio</p></div>
 <div class="relative text-center"><p class="font-display italic text-4xl sm:text-5xl leading-tight">The Artworks<br/>Catalog</p><div class="w-12 h-px bg-[#5B4432] mx-auto my-5"></div><p class="text-[9px] tracking-[0.3em] uppercase">A complete collection of works</p></div>
-<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em]">ALL · 14 ARTWORKS</p></div>
+<div class="relative text-center mb-4"><p class="text-[10px] tracking-[0.25em]">ALL · 15 ARTWORKS</p></div>
 </div>
 <div class="flex items-center justify-between mt-4 px-1"><div><h3 class="font-display text-xl text-dark">The Artworks Catalog</h3><p class="text-xs text-dark/50 mt-1">All illustrations in one place</p></div><span class="text-cocoa text-sm">Open catalog <i class="fa fa-arrow-right ml-1"></i></span></div>
 </button>
@@ -403,7 +403,7 @@ document.addEventListener('keydown', function(e) {
     <h3 class="font-display text-2xl font-semibold">The Artworks Catalog</h3>
     <p class="text-dark/55 text-sm mt-2">All artworks gathered in one place.</p>
     <div class="w-16 h-0.5 bg-accent mx-auto mt-4"></div>
-    <p id="catalogCount" class="text-center text-xs text-dark/45 mt-4">14 artworks</p>
+    <p id="catalogCount" class="text-center text-xs text-dark/45 mt-4">15 artworks</p>
     <button type="button" onclick="toggleCompleteCatalog()" class="mt-4 text-xs text-cocoa underline underline-offset-4">Close catalog</button>
    </div>
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="catalogGrid">
@@ -548,6 +548,17 @@ document.addEventListener('keydown', function(e) {
     <h3 class="font-semibold text-base mb-2">Monarch — Golden Embrace</h3>
     <p class="text-sm text-dark/60 mb-3" data-en="Inspired by the Monarch butterfly, this couture design translates intricate wing patterns into an elegant asymmetrical silhouette. Flowing copper-orange panels, delicate vein-like lines, and subtle pearl embellishments express natural beauty through refined craftsmanship." data-id="Terinspirasi kupu-kupu Monarch, desain couture ini menerjemahkan pola sayap menjadi siluet asimetris yang anggun. Panel copper-orange, garis menyerupai urat sayap, dan ornamen mutiara menampilkan keindahan alam melalui detail yang halus.">Inspired by the Monarch butterfly, this couture design translates intricate wing patterns into an elegant asymmetrical silhouette. Flowing copper-orange panels, delicate vein-like lines, and subtle pearl embellishments express natural beauty through refined craftsmanship.</p>
     <button class="flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya13')"><span class="heart-btn text-lg" id="hati-karya13">🖤</span><span data-en="Like" data-id="Suka">Like</span><span class="font-semibold" id="jumlah-karya13">0</span></button>
+  </div>
+</article>
+   <article class="catalog-card bg-white rounded-xl overflow-hidden shadow-md card-hover" data-category="lepidoptera">
+  <div class="aspect-[3/4] bg-warm/30 flex items-center justify-center">
+    <div class="karya-wrapper" onclick="bukaZoom('purple-emperor-imperial-twilight.png')"><img alt="Purple Emperor — Imperial Twilight" class="w-full h-full object-contain" draggable="false" oncontextmenu="return false;" ondragstart="return false;" src="purple-emperor-imperial-twilight.png"/></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center justify-between gap-2 mb-2"><span class="text-[10px] uppercase tracking-wider text-cocoa bg-cream px-2 py-1 rounded">Lepidoptera</span><span class="text-[10px] text-dark/40">Ibis Paint</span></div>
+    <h3 class="font-semibold text-base mb-2">Purple Emperor — Imperial Twilight</h3>
+    <p class="text-sm text-dark/60 mb-3" data-en="Inspired by the Purple Emperor butterfly, this couture design captures its mysterious allure through rich violet, deep burgundy, and black. Dramatic wing-inspired panels frame a structured corset, while delicate eyespot motifs and butterfly details bring the beauty of the wings into a bold, regal silhouette." data-id="Terinspirasi dari kupu-kupu Purple Emperor, desain couture ini menangkap pesonanya yang misterius melalui warna ungu pekat, burgundy, dan hitam. Panel dramatis menyerupai sayap membingkai korset terstruktur, sementara motif eyespot dan detail kupu-kupu menghadirkan keindahan sayap dalam siluet yang berani dan megah.">Inspired by the Purple Emperor butterfly, this couture design captures its mysterious allure through rich violet, deep burgundy, and black. Dramatic wing-inspired panels frame a structured corset, while delicate eyespot motifs and butterfly details bring the beauty of the wings into a bold, regal silhouette.</p>
+    <button class="flex items-center gap-2 text-sm text-cocoa hover:text-red-600 transition" onclick="tambahSuka('karya15')"><span class="heart-btn text-lg" id="hati-karya15">🖤</span><span data-en="Like" data-id="Suka">Like</span><span class="font-semibold" id="jumlah-karya15">0</span></button>
   </div>
 </article>
    <article class="catalog-card bg-white rounded-xl overflow-hidden shadow-md card-hover" data-category="signature-works">
@@ -788,7 +799,8 @@ document.addEventListener('keydown', function(e) {
             {title:'Fallen Grace',image:'fallen-grace.png',description:'A fallen angel reimagined in couture: soft beige, ash crimson, flowing drapery, distressed details, and muted grey pearls.'}
           ]}
           ,lepidoptera: { title: 'Lepidoptera', works: [
-            {title:'Monarch — Golden Embrace',image:'monarch-golden-embrace.png',description:'Inspired by the Monarch butterfly, this couture design translates intricate wing patterns into an elegant asymmetrical silhouette. Flowing copper-orange panels, delicate vein-like lines, and subtle pearl embellishments express natural beauty through refined craftsmanship.'}
+            {title:'Monarch — Golden Embrace',image:'monarch-golden-embrace.png',description:'Inspired by the Monarch butterfly, this couture design translates intricate wing patterns into an elegant asymmetrical silhouette. Flowing copper-orange panels, delicate vein-like lines, and subtle pearl embellishments express natural beauty through refined craftsmanship.'},
+            {title:'Purple Emperor — Imperial Twilight',image:'purple-emperor-imperial-twilight.png',description:'Inspired by the Purple Emperor butterfly, this couture design captures its mysterious allure through rich violet, deep burgundy, and black. Dramatic wing-inspired panels frame a structured corset, while delicate eyespot motifs and butterfly details bring the beauty of the wings into a bold, regal silhouette.'}
           ]}
         };
         let activeCollection = 'nocturnal';
